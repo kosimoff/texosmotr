@@ -1711,7 +1711,8 @@ var staticRenderFns = [
           "a",
           {
             attrs: {
-              href: "https://github.com/kosimoff/texosmotr/archive/1.0.0.zip"
+              href:
+                "https://github.com/kosimoff/texosmotr/releases/download/1.0.0/TEXOSMOTR.TJ.apk"
             }
           },
           [
