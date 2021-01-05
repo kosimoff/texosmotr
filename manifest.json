@@ -39,7 +39,7 @@
       "density": "4.0"
     }
   ],
-  "start_url": "https://texosmotr.tj",
+  "start_url": "/",
   "background_color": "#f7fafc",
   "theme_color": "#326787",
   "display": "standalone"
