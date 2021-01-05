@@ -225,12 +225,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Application",
   props: ['supportInstall'],
@@ -1117,7 +1111,7 @@ var render = function() {
                     attrs: { for: "engine" }
                   },
                   [
-                    _vm._v("Мощность двигателя (л.с.) "),
+                    _vm._v("Лошадиная сила двигателя "),
                     _c(
                       "span",
                       {
@@ -1572,19 +1566,13 @@ var render = function() {
             )
           ]),
           _vm._v(" "),
-          _c("p", [
-            _vm._v(
-              '-или отправьте нам "кофе" на номер +992927508833 через Alif.mobi, DCity или Эсхата Онлайн =)'
-            )
+          _c("p", { staticClass: "mt-5" }, [
+            _vm._v("Эл. почта: info@texosmotr.tj")
           ]),
           _vm._v(" "),
           _c("p", { staticClass: "pt-5" }, [
             _vm._v("Мы будем рады любым вашим вкладом. Спасибо!")
-          ]),
-          _vm._v(" "),
-          _c("p", { staticClass: "pt-5" }, [_vm._v("Контакты")]),
-          _vm._v(" "),
-          _vm._m(5)
+          ])
         ])
       : _vm._e(),
     _vm._v(" "),
@@ -1617,10 +1605,10 @@ var render = function() {
         },
         [_vm._v("О проекте")]
       ),
-      _vm._m(6)
+      _vm._m(5)
     ]),
     _vm._v(" "),
-    _vm._m(7)
+    _vm._m(6)
   ])
 }
 var staticRenderFns = [
@@ -1670,16 +1658,6 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "uppercase" }, [
       _c("b", [_vm._v("О проекте")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("ul", [
-      _c("li", [_vm._v("Тел.: +992 92 750 88 33")]),
-      _vm._v(" "),
-      _c("li", [_vm._v("Эл. почта: kosimoff@gmail.com")])
     ])
   },
   function() {
