@@ -1601,9 +1601,7 @@ var render = function() {
             )
           ]),
           _vm._v(" "),
-          _c("p", { staticClass: "mt-5" }, [
-            _vm._v("Эл. почта: info@texosmotr.tj")
-          ]),
+          _vm._m(5),
           _vm._v(" "),
           _c("p", { staticClass: "pt-5" }, [
             _vm._v("Мы будем рады любым вашим вкладом. Спасибо!")
@@ -1640,10 +1638,10 @@ var render = function() {
         },
         [_vm._v("О проекте")]
       ),
-      _vm._m(5)
+      _vm._m(6)
     ]),
     _vm._v(" "),
-    _vm._m(6)
+    _vm._m(7)
   ])
 }
 var staticRenderFns = [
@@ -1693,6 +1691,17 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "uppercase" }, [
       _c("b", [_vm._v("О проекте")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", { staticClass: "mt-5" }, [
+      _vm._v("Эл. почта: "),
+      _c("a", { attrs: { href: "mailto:info@texosmotr.tj" } }, [
+        _vm._v("info@texosmotr.tj")
+      ])
     ])
   },
   function() {
