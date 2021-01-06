@@ -226,6 +226,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Application",
   props: ['supportInstall'],
@@ -284,6 +286,7 @@ __webpack_require__.r(__webpack_exports__);
       resultMarginBottom: false,
       resultMarginLeft: false,
       resultFont: false,
+      engineCapacityFault: false,
       window: {
         width: 0,
         height: 0
@@ -514,9 +517,14 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     calculate: function calculate() {
-      this.getPercentage();
-      this.tax = (this.percentage / 100 * this.engineCapacity * this.base).toFixed(2) * 1;
-      this.total = (this.tax + this.talon + this.insurance1 + this.insurance2 + this.ecology + this.medical + this.diag + this.getGas()).toFixed(2);
+      if (this.engineCapacity && this.engineCapacity < 10) {
+        this.engineCapacityFault = true;
+      } else {
+        this.engineCapacityFault = false;
+        this.getPercentage();
+        this.tax = (this.percentage / 100 * this.engineCapacity * this.base).toFixed(2) * 1;
+        this.total = (this.tax + this.talon + this.insurance1 + this.insurance2 + this.ecology + this.medical + this.diag + this.getGas()).toFixed(2);
+      }
     }
   }
 });
@@ -1149,7 +1157,6 @@ var render = function() {
                     "pl-2 focus:bg-white focus:outline-none w-full border border-red-800 rounded bg-gray-200",
                   attrs: {
                     type: "number",
-                    min: "10",
                     id: "engine",
                     placeholder: "мощность двигателя в л.с.",
                     required: ""
@@ -1166,7 +1173,27 @@ var render = function() {
                       _vm.switchFields
                     ]
                   }
-                })
+                }),
+                _vm._v(" "),
+                _vm.engineCapacityFault
+                  ? _c("div", { staticClass: "text-sm text-white" }, [
+                      _vm._v(
+                        "\n                          Ошибка! Похоже вы ввели объем двигателя. Введите мощность двигателя в лошадиных силах. "
+                      ),
+                      _c(
+                        "span",
+                        {
+                          staticClass: "cursor-pointer text-white underline",
+                          on: {
+                            click: function($event) {
+                              _vm.enginePowerHint = true
+                            }
+                          }
+                        },
+                        [_vm._v("Помощь.")]
+                      )
+                    ])
+                  : _vm._e()
               ]),
               _vm._v(" "),
               _vm.truckLoadField
