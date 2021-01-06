@@ -228,6 +228,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Application",
   props: ['supportInstall'],
@@ -269,7 +271,7 @@ __webpack_require__.r(__webpack_exports__);
       truckLoadField: false,
       passengerCountField: false,
       gasField: true,
-      gas: 'нету',
+      gas: 'нет',
       engineCapacity: null,
       truckLoad: null,
       passengerCount: null,
@@ -1348,19 +1350,19 @@ var render = function() {
                             expression: "gas"
                           }
                         ],
-                        attrs: { id: "gasNo", type: "radio", value: "нету" },
-                        domProps: { checked: _vm._q(_vm.gas, "нету") },
+                        attrs: { id: "gasNo", type: "radio", value: "нет" },
+                        domProps: { checked: _vm._q(_vm.gas, "нет") },
                         on: {
                           change: [
                             function($event) {
-                              _vm.gas = "нету"
+                              _vm.gas = "нет"
                             },
                             _vm.switchFields
                           ]
                         }
                       }),
                       _vm._v(" "),
-                      _c("label", { attrs: { for: "gasNo" } }, [_vm._v("Нету")])
+                      _c("label", { attrs: { for: "gasNo" } }, [_vm._v("Нет")])
                     ])
                   ])
                 : _vm._e(),
@@ -1406,7 +1408,7 @@ var render = function() {
               _vm._v(" "),
               _c("div", [
                 _vm._v(
-                  "Мощность двигателья: " + _vm._s(_vm.engineCapacity) + " л.с."
+                  "Мощность двигателя: " + _vm._s(_vm.engineCapacity) + " л.с."
                 )
               ]),
               _vm._v(" "),
@@ -1441,11 +1443,17 @@ var render = function() {
               _c("div", [_vm._v(_vm._s(_vm.talon) + " сомони - талон")]),
               _vm._v(" "),
               _c("div", [
-                _vm._v(_vm._s(_vm.insurance1) + " сомони - страховка 1")
+                _vm._v(
+                  _vm._s(_vm.insurance1) +
+                    " сомони - обязательная страховка (ОСАГО)"
+                )
               ]),
               _vm._v(" "),
               _c("div", [
-                _vm._v(_vm._s(_vm.insurance2) + " сомони - страховка 2")
+                _vm._v(
+                  _vm._s(_vm.insurance2) +
+                    " сомони - добровольная страховка (КАСКО)"
+                )
               ]),
               _vm._v(" "),
               _c("div", [_vm._v(_vm._s(_vm.ecology) + " сомони - экология")]),
@@ -1453,14 +1461,14 @@ var render = function() {
               _vm.gas === "есть"
                 ? _c("div", [
                     _vm._v(
-                      _vm._s(_vm.gasCertificate) + " сомони - сертификат газ"
+                      _vm._s(_vm.gasCertificate) + " сомони - сертификат (газ)"
                     )
                   ])
                 : _vm._e(),
               _vm._v(" "),
               _vm.gas === "есть"
                 ? _c("div", [
-                    _vm._v(_vm._s(_vm.gasID) + " сомони - удостоверение газ")
+                    _vm._v(_vm._s(_vm.gasID) + " сомони - удостоверение (газ)")
                   ])
                 : _vm._e(),
               _vm._v(" "),
@@ -1472,8 +1480,20 @@ var render = function() {
               _vm._v(" "),
               _c("div", [_vm._v("__________________________")]),
               _vm._v(" "),
-              _c("div", { staticClass: "font-bold pt-3" }, [
-                _vm._v("Итого: " + _vm._s(_vm.total) + " сомони")
+              _c("div", { staticClass: "font-bold pt-3" }, [_vm._v("Итого:")]),
+              _vm._v(" "),
+              _c("div", [
+                _vm._v(
+                  _vm._s(_vm.total - _vm.insurance2) +
+                    " сомони (без добровольной страховки)"
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", [
+                _vm._v(
+                  _vm._s(_vm.total) +
+                    " сомони (включая добровольную страховку )"
+                )
               ])
             ]),
             _vm._v(" "),
@@ -1604,7 +1624,7 @@ var render = function() {
           _vm._m(5),
           _vm._v(" "),
           _c("p", { staticClass: "pt-5" }, [
-            _vm._v("Мы будем рады любым вашим вкладом. Спасибо!")
+            _vm._v("Мы будем рады любому вашему вкладу. Спасибо!")
           ])
         ])
       : _vm._e(),
