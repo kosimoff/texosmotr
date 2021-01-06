@@ -425,7 +425,9 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     switchFields: function switchFields() {
-      //this.percentage = false;
+      this.percentage = false;
+      this.engineCapacityFault = false;
+
       switch (this.selectedTransport) {
         case 'Мотоцикл':
           this.truckLoadField = false;
