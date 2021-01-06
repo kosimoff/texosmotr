@@ -226,6 +226,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Application",
   props: ['supportInstall'],
@@ -1149,8 +1151,12 @@ var render = function() {
                     "pl-2 focus:bg-white focus:outline-none w-full border border-red-800 rounded bg-gray-200",
                   attrs: {
                     type: "number",
-                    min: "1",
+                    min: "10",
                     id: "engine",
+                    placeholder: "мощность двигателя в л.с.",
+                    oninvalid:
+                      "this.setCustomValidity('Похоже форма пустая или вы ввели объем двигателя. Введите мощность двигателя в лошадиных силах. Нажмите на ? для подробной информации')",
+                    oninput: "this.setCustomValidity('')",
                     required: ""
                   },
                   domProps: { value: _vm.engineCapacity },
