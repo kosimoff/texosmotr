@@ -226,8 +226,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Application",
   props: ['supportInstall'],
@@ -1154,9 +1152,6 @@ var render = function() {
                     min: "10",
                     id: "engine",
                     placeholder: "мощность двигателя в л.с.",
-                    oninvalid:
-                      "this.setCustomValidity('Похоже форма пустая или вы ввели объем двигателя. Введите мощность двигателя в лошадиных силах. Нажмите на ? для подробной информации')",
-                    oninput: "this.setCustomValidity('')",
                     required: ""
                   },
                   domProps: { value: _vm.engineCapacity },
