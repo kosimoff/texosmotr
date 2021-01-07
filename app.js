@@ -502,6 +502,10 @@ __webpack_require__.r(__webpack_exports__);
           break;
       }
     },
+    aboutField: function aboutField() {
+      this.about = true;
+      ym(71011222, 'reachGoal', 'aboutProject');
+    },
     getPercentage: function getPercentage() {
       for (var i = 0; i < this.types.length; i++) {
         if (this.types[i].name === this.selectedTransport) {
@@ -1652,7 +1656,7 @@ var render = function() {
           staticClass: "text-blue-500 cursor-pointer",
           on: {
             click: function($event) {
-              _vm.about = true
+              return _vm.aboutField()
             }
           }
         },
