@@ -1050,7 +1050,7 @@ var render = function() {
       ? _c(
           "div",
           {
-            staticClass: "p-10 shadow-2xl bg-blue-800 border-red-800 border",
+            staticClass: "p-10 shadow-2xl bg-blue-800 rounded-lg",
             style: [
               { fontSize: _vm.calcFont },
               { marginTop: _vm.calcMarginTop },
@@ -1092,7 +1092,7 @@ var render = function() {
                       }
                     ],
                     staticClass:
-                      "focus:bg-white focus:outline-none w-full border border-red-800 rounded bg-gray-200",
+                      "focus:bg-white focus:outline-none w-full rounded bg-gray-200",
                     attrs: { id: "transport", required: "" },
                     on: {
                       change: [
@@ -1142,10 +1142,7 @@ var render = function() {
                       [
                         _c("img", {
                           staticClass: "w-5 inline",
-                          attrs: {
-                            src: "images/questionmark.png",
-                            alt: "Мощность двишателя"
-                          }
+                          attrs: { src: "images/questionmark.png", alt: "?" }
                         })
                       ]
                     )
@@ -1162,13 +1159,8 @@ var render = function() {
                     }
                   ],
                   staticClass:
-                    "pl-2 focus:bg-white focus:outline-none w-full border border-red-800 rounded bg-gray-200",
-                  attrs: {
-                    type: "number",
-                    id: "engine",
-                    placeholder: "мощность двигателя в л.с.",
-                    required: ""
-                  },
+                    "pl-2 focus:bg-white focus:outline-none w-full rounded bg-gray-200",
+                  attrs: { type: "number", id: "engine", required: "" },
                   domProps: { value: _vm.engineCapacity },
                   on: {
                     input: [
@@ -1229,7 +1221,7 @@ var render = function() {
                               staticClass: "w-5 inline",
                               attrs: {
                                 src: "images/questionmark.png",
-                                alt: "Грузоподъемность"
+                                alt: "?"
                               }
                             })
                           ]
@@ -1247,7 +1239,7 @@ var render = function() {
                         }
                       ],
                       staticClass:
-                        "pl-2 focus:bg-white focus:outline-none w-full border border-red-800 rounded bg-gray-200",
+                        "pl-2 focus:bg-white focus:outline-none w-full rounded bg-gray-200",
                       attrs: {
                         type: "number",
                         min: "1",
@@ -1291,7 +1283,7 @@ var render = function() {
                         }
                       ],
                       staticClass:
-                        "pl-2 focus:bg-white focus:outline-none w-full border border-red-800 rounded bg-gray-200",
+                        "pl-2 focus:bg-white focus:outline-none w-full rounded bg-gray-200",
                       attrs: {
                         type: "number",
                         min: "1",
@@ -1676,7 +1668,7 @@ var staticRenderFns = [
     return _c("a", { attrs: { href: "./" } }, [
       _c("img", {
         staticClass: "w-1/2 m-auto",
-        attrs: { src: "images/logo.png" }
+        attrs: { src: "images/logo.png", alt: "TEXOSMOTR.TJ" }
       })
     ])
   },
