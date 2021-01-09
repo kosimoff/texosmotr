@@ -1676,7 +1676,7 @@ var staticRenderFns = [
     return _c("a", { attrs: { href: "./" } }, [
       _c("img", {
         staticClass: "w-1/2 m-auto",
-        attrs: { src: "images/logo.png?1.0.0" }
+        attrs: { src: "images/logo.png" }
       })
     ])
   },
