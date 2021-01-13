@@ -1367,7 +1367,7 @@ var render = function() {
                 _c("input", {
                   staticClass:
                     "focus:outline-none focus:bg-blue-700 bg-red-800 hover:bg-red-900 w-full text-white p-2 rounded",
-                  attrs: { type: "submit", value: "Посчитать" },
+                  attrs: { type: "submit", value: "Подсчитать" },
                   on: {
                     click: function($event) {
                       return _vm.calculate()
