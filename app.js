@@ -1050,7 +1050,7 @@ var render = function() {
       ? _c(
           "div",
           {
-            staticClass: "p-10 shadow-2xl bg-blue-800 rounded-lg",
+            staticClass: "p-10 mt-10 shadow-2xl bg-blue-800 rounded-lg",
             style: [
               { fontSize: _vm.calcFont },
               { marginTop: _vm.calcMarginTop },
@@ -1393,7 +1393,7 @@ var render = function() {
             ]
           },
           [
-            _c("div", { staticClass: "bg-white p-5 shadow-2xl" }, [
+            _c("div", { staticClass: "bg-white p-10 shadow-2xl" }, [
               _c("div", { staticClass: "font-bold" }, [_vm._v("Данные:")]),
               _vm._v(" "),
               _c("div", { staticClass: "pt-1" }, [
@@ -1424,9 +1424,9 @@ var render = function() {
                   ])
                 : _vm._e(),
               _vm._v(" "),
-              _c("div", [_vm._v("__________________________")]),
+              _c("hr", { staticClass: "mt-5 border-black" }),
               _vm._v(" "),
-              _c("div", { staticClass: "font-bold pt-3" }, [
+              _c("div", { staticClass: "font-bold pt-5" }, [
                 _vm._v("Расходы:")
               ]),
               _vm._v(" "),
@@ -1474,9 +1474,9 @@ var render = function() {
               _vm._v(" "),
               _c("div", [_vm._v(_vm._s(_vm.diag) + " сомони - диагностика")]),
               _vm._v(" "),
-              _c("div", [_vm._v("__________________________")]),
+              _c("hr", { staticClass: "mt-5 border-black" }),
               _vm._v(" "),
-              _c("div", { staticClass: "font-bold pt-3" }, [_vm._v("Итого:")]),
+              _c("div", { staticClass: "font-bold pt-5" }, [_vm._v("Итого:")]),
               _vm._v(" "),
               _c("div", [
                 _vm._v(
@@ -1667,7 +1667,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("a", { attrs: { href: "./" } }, [
       _c("img", {
-        staticClass: "w-1/2 m-auto",
+        staticClass: "w-1/2 mx-auto my-10",
         attrs: { src: "images/logo.png", alt: "TEXOSMOTR.TJ" }
       })
     ])
