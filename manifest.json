@@ -1,5 +1,5 @@
 {
-  "short_name": "TEXOSMOTR.TJ",
+  "short_name": "Техосмотр",
   "name": "TEXOSMOTR.TJ",
   "icons": [
     {
@@ -40,7 +40,7 @@
     }
   ],
   "start_url": "/",
-  "background_color": "#f7fafc",
+  "background_color": "#ffffff",
   "theme_color": "#326787",
   "display": "standalone"
 }
