@@ -277,9 +277,24 @@ __webpack_require__.r(__webpack_exports__);
       total: null,
       selectedTransport: 'Легковая',
       gasField: true,
-      gas: 'Нет',
+      gasYesNo: 'Нет',
+      gas: null,
       filmField: true,
-      film: 'Без тонировки',
+      filmPrice: [{
+        makeYear: 'по 2004',
+        'Без тонировки': 0,
+        'Только заднее': 7,
+        'Заднее и задние боковые': 35,
+        'Все стёкла': 65
+      }, {
+        makeYear: '2005 и после',
+        'Без тонировки': 0,
+        'Только заднее': 12,
+        'Заднее и задние боковые': 45,
+        'Все стёкла': 86
+      }],
+      filmType: 'Без тонировки',
+      film: null,
       makeYear: 'по 2004',
       enginePower: null,
       truckLoad: null,
@@ -540,39 +555,17 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     getGas: function getGas() {
-      if (this.gasField && this.gas === 'Есть') {
-        return this.gasCertificate + this.gasID;
+      if (this.gasField && this.gasYesNo === 'Есть') {
+        this.gas = this.gasCertificate + this.gasID;
       } else {
         return 0;
       }
     },
     getFilm: function getFilm() {
-      if (this.filmField) {
-        if (this.makeYear === 'по 2004') {
-          if (this.film === 'Только заднее') {
-            return this.base * 7;
-          } else if (this.film === 'Заднее и задние боковые') {
-            return this.base * 35;
-          } else if (this.film === 'Все стёкла') {
-            return this.base * 65;
-          } else {
-            return 0;
-          }
-        } else if (this.makeYear === '2005 и после') {
-          if (this.film === 'Только заднее') {
-            return this.base * 12;
-          } else if (this.film === 'Заднее и задние боковые') {
-            return this.base * 45;
-          } else if (this.film === 'Все стёкла') {
-            return this.base * 86;
-          } else {
-            return 0;
-          }
-        } else {
-          return 0;
+      for (var i in this.filmPrice) {
+        if (this.filmPrice[i].makeYear === this.makeYear) {
+          this.film = this.filmPrice[i][this.filmType] * this.base;
         }
-      } else {
-        return 0;
       }
     },
     calculate: function calculate() {
@@ -589,8 +582,10 @@ __webpack_require__.r(__webpack_exports__);
       } else {
         this.enginePowerFault = false;
         this.getPercentage();
+        this.getGas();
+        this.getFilm();
         this.tax = (this.percentage / 100 * this.enginePower * this.base).toFixed(2) * 1;
-        this.total = (this.tax + this.talon + this.mainInsurance + this.insurance + this.ecology + this.medical + this.diag + this.getGas() + this.getFilm()).toFixed(1);
+        this.total = (this.tax + this.talon + this.mainInsurance + this.insurance + this.ecology + this.medical + this.diag + this.gas + this.film).toFixed(1);
       }
     }
   }
@@ -1386,17 +1381,17 @@ var render = function() {
                             {
                               name: "model",
                               rawName: "v-model",
-                              value: _vm.gas,
-                              expression: "gas"
+                              value: _vm.gasYesNo,
+                              expression: "gasYesNo"
                             }
                           ],
                           staticClass: "ml-4",
                           attrs: { id: "gasYes", type: "radio", value: "Есть" },
-                          domProps: { checked: _vm._q(_vm.gas, "Есть") },
+                          domProps: { checked: _vm._q(_vm.gasYesNo, "Есть") },
                           on: {
                             change: [
                               function($event) {
-                                _vm.gas = "Есть"
+                                _vm.gasYesNo = "Есть"
                               },
                               _vm.switchFields
                             ]
@@ -1413,17 +1408,17 @@ var render = function() {
                             {
                               name: "model",
                               rawName: "v-model",
-                              value: _vm.gas,
-                              expression: "gas"
+                              value: _vm.gasYesNo,
+                              expression: "gasYesNo"
                             }
                           ],
                           staticClass: "ml-4",
                           attrs: { id: "gasNo", type: "radio", value: "Нет" },
-                          domProps: { checked: _vm._q(_vm.gas, "Нет") },
+                          domProps: { checked: _vm._q(_vm.gasYesNo, "Нет") },
                           on: {
                             change: [
                               function($event) {
-                                _vm.gas = "Нет"
+                                _vm.gasYesNo = "Нет"
                               },
                               _vm.switchFields
                             ]
@@ -1444,7 +1439,7 @@ var render = function() {
                       "label",
                       {
                         staticClass: "flex mt-5 text-white",
-                        attrs: { for: "film" }
+                        attrs: { for: "filmType" }
                       },
                       [_vm._v("Тонировка")]
                     ),
@@ -1456,13 +1451,13 @@ var render = function() {
                           {
                             name: "model",
                             rawName: "v-model",
-                            value: _vm.film,
-                            expression: "film"
+                            value: _vm.filmType,
+                            expression: "filmType"
                           }
                         ],
                         staticClass:
                           "focus:bg-white focus:outline-none w-full rounded bg-gray-200 text-gray-700",
-                        attrs: { id: "film", required: "" },
+                        attrs: { id: "filmType", required: "" },
                         on: {
                           change: [
                             function($event) {
@@ -1474,7 +1469,7 @@ var render = function() {
                                   var val = "_value" in o ? o._value : o.value
                                   return val
                                 })
-                              _vm.film = $event.target.multiple
+                              _vm.filmType = $event.target.multiple
                                 ? $$selectedVal
                                 : $$selectedVal[0]
                             },
@@ -1495,7 +1490,7 @@ var render = function() {
                   ])
                 : _vm._e(),
               _vm._v(" "),
-              _vm.filmField && _vm.film !== "Без тонировки"
+              _vm.filmField && _vm.filmType !== "Без тонировки"
                 ? _c("div", { staticClass: "mt-5 text-white" }, [
                     _c(
                       "fieldset",
@@ -1619,7 +1614,9 @@ var render = function() {
               ]),
               _vm._v(" "),
               _vm.gasField
-                ? _c("div", [_vm._v("Газ: " + _vm._s(_vm.gas.toLowerCase()))])
+                ? _c("div", [
+                    _vm._v("Газ: " + _vm._s(_vm.gasYesNo.toLowerCase()))
+                  ])
                 : _vm._e(),
               _vm._v(" "),
               _vm.selectedTransport === "Миниавтобус" ||
@@ -1637,11 +1634,11 @@ var render = function() {
               _vm._v(" "),
               _vm.filmField
                 ? _c("div", [
-                    _vm._v("Тонировка: " + _vm._s(_vm.film.toLowerCase()))
+                    _vm._v("Тонировка: " + _vm._s(_vm.filmType.toLowerCase()))
                   ])
                 : _vm._e(),
               _vm._v(" "),
-              _vm.filmField && _vm.film !== "Без тонировки"
+              _vm.filmField && _vm.filmType !== "Без тонировки"
                 ? _c("div", [_vm._v("Год выпуска: " + _vm._s(_vm.makeYear))])
                 : _vm._e(),
               _vm._v(" "),
@@ -1711,7 +1708,7 @@ var render = function() {
               _vm._v(" "),
               _c("div", [_vm._v(_vm._s(_vm.ecology) + " сомони - экология")]),
               _vm._v(" "),
-              _vm.gasField && _vm.gas === "Есть"
+              _vm.gasField && _vm.gasYesNo === "Есть"
                 ? _c("div", [
                     _vm._v(
                       _vm._s(_vm.gasCertificate) + " сомони - сертификат (газ)"
@@ -1719,7 +1716,7 @@ var render = function() {
                   ])
                 : _vm._e(),
               _vm._v(" "),
-              _vm.gasField && _vm.gas === "Есть"
+              _vm.gasField && _vm.gasYesNo === "Есть"
                 ? _c("div", [
                     _vm._v(_vm._s(_vm.gasID) + " сомони - удостоверение (газ)")
                   ])
@@ -1731,12 +1728,12 @@ var render = function() {
               _vm._v(" "),
               _c("div", [_vm._v(_vm._s(_vm.diag) + " сомони - диагностика")]),
               _vm._v(" "),
-              _vm.filmField && _vm.film !== "Без тонировки"
+              _vm.filmField && _vm.filmType !== "Без тонировки"
                 ? _c("div", [
                     _vm._v(
-                      _vm._s(_vm.getFilm()) +
+                      _vm._s(_vm.film) +
                         " сомони - тонировка (" +
-                        _vm._s(_vm.film.toLowerCase()) +
+                        _vm._s(_vm.filmType.toLowerCase()) +
                         ")"
                     )
                   ])
