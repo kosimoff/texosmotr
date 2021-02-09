@@ -1155,7 +1155,7 @@ var render = function() {
                 _c(
                   "label",
                   {
-                    staticClass: "flex pt-5 text-white",
+                    staticClass: "flex mt-5 text-white",
                     attrs: { for: "transport" }
                   },
                   [_vm._v("Тип транспорта")]
@@ -1205,7 +1205,7 @@ var render = function() {
                 _c(
                   "label",
                   {
-                    staticClass: "block pt-5 text-white",
+                    staticClass: "block mt-5 text-white",
                     attrs: { for: "engine" }
                   },
                   [
@@ -1287,7 +1287,7 @@ var render = function() {
                     _c(
                       "label",
                       {
-                        staticClass: "block pt-5 text-white",
+                        staticClass: "block mt-5 text-white",
                         attrs: { for: "load" }
                       },
                       [
@@ -1354,7 +1354,7 @@ var render = function() {
                     _c(
                       "label",
                       {
-                        staticClass: "block pt-5 text-white",
+                        staticClass: "block mt-5 text-white",
                         attrs: { for: "passenger" }
                       },
                       [_vm._v("Количество мест")]
@@ -1394,269 +1394,289 @@ var render = function() {
                 : _vm._e(),
               _vm._v(" "),
               _vm.gasField
-                ? _c("div", { staticClass: "pt-5 text-white" }, [
-                    _c("fieldset", [
-                      _c("legend", [_vm._v("Газ")]),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.gas,
-                            expression: "gas"
+                ? _c("div", { staticClass: "mt-5 text-white" }, [
+                    _c(
+                      "fieldset",
+                      { staticClass: "border border-gray-500 px-5 pb-5" },
+                      [
+                        _c("legend", { staticClass: "px-1" }, [_vm._v("Газ")]),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.gas,
+                              expression: "gas"
+                            }
+                          ],
+                          attrs: { id: "gasYes", type: "radio", value: "Есть" },
+                          domProps: { checked: _vm._q(_vm.gas, "Есть") },
+                          on: {
+                            change: [
+                              function($event) {
+                                _vm.gas = "Есть"
+                              },
+                              _vm.switchFields
+                            ]
                           }
-                        ],
-                        attrs: { id: "gasYes", type: "radio", value: "Есть" },
-                        domProps: { checked: _vm._q(_vm.gas, "Есть") },
-                        on: {
-                          change: [
-                            function($event) {
-                              _vm.gas = "Есть"
-                            },
-                            _vm.switchFields
-                          ]
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("label", { attrs: { for: "gasYes" } }, [
-                        _vm._v("Есть")
-                      ]),
-                      _c("br"),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.gas,
-                            expression: "gas"
+                        }),
+                        _vm._v(" "),
+                        _c("label", { attrs: { for: "gasYes" } }, [
+                          _vm._v("Есть")
+                        ]),
+                        _c("br"),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.gas,
+                              expression: "gas"
+                            }
+                          ],
+                          attrs: { id: "gasNo", type: "radio", value: "Нет" },
+                          domProps: { checked: _vm._q(_vm.gas, "Нет") },
+                          on: {
+                            change: [
+                              function($event) {
+                                _vm.gas = "Нет"
+                              },
+                              _vm.switchFields
+                            ]
                           }
-                        ],
-                        attrs: { id: "gasNo", type: "radio", value: "Нет" },
-                        domProps: { checked: _vm._q(_vm.gas, "Нет") },
-                        on: {
-                          change: [
-                            function($event) {
-                              _vm.gas = "Нет"
-                            },
-                            _vm.switchFields
-                          ]
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("label", { attrs: { for: "gasNo" } }, [_vm._v("Нет")])
-                    ])
+                        }),
+                        _vm._v(" "),
+                        _c("label", { attrs: { for: "gasNo" } }, [
+                          _vm._v("Нет")
+                        ])
+                      ]
+                    )
                   ])
                 : _vm._e(),
               _vm._v(" "),
               _vm.filmField
-                ? _c("div", { staticClass: "pt-5 text-white" }, [
-                    _c("fieldset", [
-                      _c("legend", [_vm._v("Тонировка")]),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.film,
-                            expression: "film"
+                ? _c("div", { staticClass: "mt-5 text-white" }, [
+                    _c(
+                      "fieldset",
+                      { staticClass: "border border-gray-500 px-5 pb-5" },
+                      [
+                        _c("legend", { staticClass: "px-1" }, [
+                          _vm._v("Тонировка")
+                        ]),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.film,
+                              expression: "film"
+                            }
+                          ],
+                          attrs: {
+                            id: "noFilm",
+                            type: "radio",
+                            value: "Без тонировки"
+                          },
+                          domProps: {
+                            checked: _vm._q(_vm.film, "Без тонировки")
+                          },
+                          on: {
+                            change: [
+                              function($event) {
+                                _vm.film = "Без тонировки"
+                              },
+                              _vm.switchFields
+                            ]
                           }
-                        ],
-                        attrs: {
-                          id: "noFilm",
-                          type: "radio",
-                          value: "Без тонировки"
-                        },
-                        domProps: {
-                          checked: _vm._q(_vm.film, "Без тонировки")
-                        },
-                        on: {
-                          change: [
-                            function($event) {
-                              _vm.film = "Без тонировки"
-                            },
-                            _vm.switchFields
-                          ]
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("label", { attrs: { for: "noFilm" } }, [
-                        _vm._v("Без тонировки")
-                      ]),
-                      _c("br"),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.film,
-                            expression: "film"
+                        }),
+                        _vm._v(" "),
+                        _c("label", { attrs: { for: "noFilm" } }, [
+                          _vm._v("Без тонировки")
+                        ]),
+                        _c("br"),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.film,
+                              expression: "film"
+                            }
+                          ],
+                          attrs: {
+                            id: "backFilm",
+                            type: "radio",
+                            value: "Только заднее"
+                          },
+                          domProps: {
+                            checked: _vm._q(_vm.film, "Только заднее")
+                          },
+                          on: {
+                            change: [
+                              function($event) {
+                                _vm.film = "Только заднее"
+                              },
+                              _vm.switchFields
+                            ]
                           }
-                        ],
-                        attrs: {
-                          id: "backFilm",
-                          type: "radio",
-                          value: "Только заднее"
-                        },
-                        domProps: {
-                          checked: _vm._q(_vm.film, "Только заднее")
-                        },
-                        on: {
-                          change: [
-                            function($event) {
-                              _vm.film = "Только заднее"
-                            },
-                            _vm.switchFields
-                          ]
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("label", { attrs: { for: "backFilm" } }, [
-                        _vm._v("Только заднее")
-                      ]),
-                      _c("br"),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.film,
-                            expression: "film"
+                        }),
+                        _vm._v(" "),
+                        _c("label", { attrs: { for: "backFilm" } }, [
+                          _vm._v("Только заднее")
+                        ]),
+                        _c("br"),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.film,
+                              expression: "film"
+                            }
+                          ],
+                          attrs: {
+                            id: "backAndBackSidesFilm",
+                            type: "radio",
+                            value: "Заднее и задние боковые"
+                          },
+                          domProps: {
+                            checked: _vm._q(_vm.film, "Заднее и задние боковые")
+                          },
+                          on: {
+                            change: [
+                              function($event) {
+                                _vm.film = "Заднее и задние боковые"
+                              },
+                              _vm.switchFields
+                            ]
                           }
-                        ],
-                        attrs: {
-                          id: "backAndBackSidesFilm",
-                          type: "radio",
-                          value: "Заднее и задние боковые"
-                        },
-                        domProps: {
-                          checked: _vm._q(_vm.film, "Заднее и задние боковые")
-                        },
-                        on: {
-                          change: [
-                            function($event) {
-                              _vm.film = "Заднее и задние боковые"
-                            },
-                            _vm.switchFields
-                          ]
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("label", { attrs: { for: "backAndBackSidesFilm" } }, [
-                        _vm._v("Заднее и задние боковые")
-                      ]),
-                      _c("br"),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.film,
-                            expression: "film"
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "label",
+                          { attrs: { for: "backAndBackSidesFilm" } },
+                          [_vm._v("Заднее и задние боковые")]
+                        ),
+                        _c("br"),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.film,
+                              expression: "film"
+                            }
+                          ],
+                          attrs: {
+                            id: "allFilm",
+                            type: "radio",
+                            value: "Все стёкла"
+                          },
+                          domProps: { checked: _vm._q(_vm.film, "Все стёкла") },
+                          on: {
+                            change: [
+                              function($event) {
+                                _vm.film = "Все стёкла"
+                              },
+                              _vm.switchFields
+                            ]
                           }
-                        ],
-                        attrs: {
-                          id: "allFilm",
-                          type: "radio",
-                          value: "Все стёкла"
-                        },
-                        domProps: { checked: _vm._q(_vm.film, "Все стёкла") },
-                        on: {
-                          change: [
-                            function($event) {
-                              _vm.film = "Все стёкла"
-                            },
-                            _vm.switchFields
-                          ]
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("label", { attrs: { for: "allFilm" } }, [
-                        _vm._v("Все стёкла")
-                      ])
-                    ])
+                        }),
+                        _vm._v(" "),
+                        _c("label", { attrs: { for: "allFilm" } }, [
+                          _vm._v("Все стёкла")
+                        ])
+                      ]
+                    )
                   ])
                 : _vm._e(),
               _vm._v(" "),
               _vm.filmField && _vm.film !== "Без тонировки"
-                ? _c("div", { staticClass: "pt-5 text-white" }, [
-                    _c("fieldset", [
-                      _c("legend", [_vm._v("Год выпуска")]),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.makeYear,
-                            expression: "makeYear"
+                ? _c("div", { staticClass: "mt-5 text-white" }, [
+                    _c(
+                      "fieldset",
+                      { staticClass: "border border-gray-500 px-5 pb-5" },
+                      [
+                        _c("legend", { staticClass: "px-1" }, [
+                          _vm._v("Год выпуска")
+                        ]),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.makeYear,
+                              expression: "makeYear"
+                            }
+                          ],
+                          attrs: {
+                            id: "old",
+                            type: "radio",
+                            value: "до 2004 (включительно)"
+                          },
+                          domProps: {
+                            checked: _vm._q(
+                              _vm.makeYear,
+                              "до 2004 (включительно)"
+                            )
+                          },
+                          on: {
+                            change: [
+                              function($event) {
+                                _vm.makeYear = "до 2004 (включительно)"
+                              },
+                              _vm.switchFields
+                            ]
                           }
-                        ],
-                        attrs: {
-                          id: "old",
-                          type: "radio",
-                          value: "до 2004 (включительно)"
-                        },
-                        domProps: {
-                          checked: _vm._q(
-                            _vm.makeYear,
-                            "до 2004 (включительно)"
-                          )
-                        },
-                        on: {
-                          change: [
-                            function($event) {
-                              _vm.makeYear = "до 2004 (включительно)"
-                            },
-                            _vm.switchFields
-                          ]
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("label", { attrs: { for: "old" } }, [
-                        _vm._v("до 2004 (включительно)")
-                      ]),
-                      _c("br"),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.makeYear,
-                            expression: "makeYear"
+                        }),
+                        _vm._v(" "),
+                        _c("label", { attrs: { for: "old" } }, [
+                          _vm._v("до 2004 (включительно)")
+                        ]),
+                        _c("br"),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.makeYear,
+                              expression: "makeYear"
+                            }
+                          ],
+                          attrs: {
+                            id: "new",
+                            type: "radio",
+                            value: "после 2005 (включительно)"
+                          },
+                          domProps: {
+                            checked: _vm._q(
+                              _vm.makeYear,
+                              "после 2005 (включительно)"
+                            )
+                          },
+                          on: {
+                            change: [
+                              function($event) {
+                                _vm.makeYear = "после 2005 (включительно)"
+                              },
+                              _vm.switchFields
+                            ]
                           }
-                        ],
-                        attrs: {
-                          id: "new",
-                          type: "radio",
-                          value: "после 2005 (включительно)"
-                        },
-                        domProps: {
-                          checked: _vm._q(
-                            _vm.makeYear,
-                            "после 2005 (включительно)"
-                          )
-                        },
-                        on: {
-                          change: [
-                            function($event) {
-                              _vm.makeYear = "после 2005 (включительно)"
-                            },
-                            _vm.switchFields
-                          ]
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("label", { attrs: { for: "new" } }, [
-                        _vm._v("после 2005 (включительно)")
-                      ])
-                    ])
+                        }),
+                        _vm._v(" "),
+                        _c("label", { attrs: { for: "new" } }, [
+                          _vm._v("после 2005 (включительно)")
+                        ])
+                      ]
+                    )
                   ])
                 : _vm._e(),
               _vm._v(" "),
