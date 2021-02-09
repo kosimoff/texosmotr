@@ -1397,7 +1397,10 @@ var render = function() {
                 ? _c("div", { staticClass: "mt-5 text-white" }, [
                     _c(
                       "fieldset",
-                      { staticClass: "border border-gray-500 px-5 pb-3" },
+                      {
+                        staticClass:
+                          "border border-gray-500 rounded-lg px-5 pb-3"
+                      },
                       [
                         _c("legend", { staticClass: "px-1" }, [_vm._v("Газ")]),
                         _vm._v(" "),
@@ -1460,7 +1463,10 @@ var render = function() {
                 ? _c("div", { staticClass: "mt-5 text-white" }, [
                     _c(
                       "fieldset",
-                      { staticClass: "border border-gray-500 px-5 pb-3" },
+                      {
+                        staticClass:
+                          "border border-gray-500 rounded-lg px-5 pb-3"
+                      },
                       [
                         _c("legend", { staticClass: "px-1" }, [
                           _vm._v("Тонировка")
@@ -1601,7 +1607,10 @@ var render = function() {
                 ? _c("div", { staticClass: "mt-5 text-white" }, [
                     _c(
                       "fieldset",
-                      { staticClass: "border border-gray-500 px-5 pb-3" },
+                      {
+                        staticClass:
+                          "border border-gray-500 rounded-lg px-5 pb-3"
+                      },
                       [
                         _c("legend", { staticClass: "px-1" }, [
                           _vm._v("Год выпуска")
@@ -1673,7 +1682,7 @@ var render = function() {
               _c("div", { staticClass: "pt-5" }, [
                 _c("input", {
                   staticClass:
-                    "focus:outline-none focus:bg-blue-700 bg-red-800 hover:bg-red-900 w-full text-white p-2 rounded",
+                    "focus:outline-none focus:bg-blue-700 bg-red-800 hover:bg-red-900 w-full text-white p-2 rounded-lg",
                   attrs: { type: "submit", value: "Подсчитать" },
                   on: {
                     click: function($event) {
