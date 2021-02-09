@@ -303,7 +303,7 @@ __webpack_require__.r(__webpack_exports__);
       gas: 'Нет',
       filmField: true,
       film: 'Без тонировки',
-      makeYear: 'до 2004 (включительно)',
+      makeYear: 'до 2004',
       engineCapacity: null,
       truckLoad: null,
       passengerCount: null,
@@ -578,7 +578,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     getFilm: function getFilm() {
       if (this.filmField) {
-        if (this.makeYear === 'до 2004 (включительно)') {
+        if (this.makeYear === 'до 2004') {
           if (this.film === 'Только заднее') {
             return this.base * 7;
           } else if (this.film === 'Заднее и задние боковые') {
@@ -588,7 +588,7 @@ __webpack_require__.r(__webpack_exports__);
           } else {
             return 0;
           }
-        } else if (this.makeYear === 'после 2005 (включительно)') {
+        } else if (this.makeYear === '2005 и после') {
           if (this.film === 'Только заднее') {
             return this.base * 12;
           } else if (this.film === 'Заднее и задние боковые') {
@@ -1616,21 +1616,14 @@ var render = function() {
                               expression: "makeYear"
                             }
                           ],
-                          attrs: {
-                            id: "old",
-                            type: "radio",
-                            value: "до 2004 (включительно)"
-                          },
+                          attrs: { id: "old", type: "radio", value: "до 2004" },
                           domProps: {
-                            checked: _vm._q(
-                              _vm.makeYear,
-                              "до 2004 (включительно)"
-                            )
+                            checked: _vm._q(_vm.makeYear, "до 2004")
                           },
                           on: {
                             change: [
                               function($event) {
-                                _vm.makeYear = "до 2004 (включительно)"
+                                _vm.makeYear = "до 2004"
                               },
                               _vm.switchFields
                             ]
@@ -1638,7 +1631,7 @@ var render = function() {
                         }),
                         _vm._v(" "),
                         _c("label", { attrs: { for: "old" } }, [
-                          _vm._v("до 2004 (включительно)")
+                          _vm._v("до 2004")
                         ]),
                         _c("br"),
                         _vm._v(" "),
@@ -1654,18 +1647,15 @@ var render = function() {
                           attrs: {
                             id: "new",
                             type: "radio",
-                            value: "после 2005 (включительно)"
+                            value: "2005 и после"
                           },
                           domProps: {
-                            checked: _vm._q(
-                              _vm.makeYear,
-                              "после 2005 (включительно)"
-                            )
+                            checked: _vm._q(_vm.makeYear, "2005 и после")
                           },
                           on: {
                             change: [
                               function($event) {
-                                _vm.makeYear = "после 2005 (включительно)"
+                                _vm.makeYear = "2005 и после"
                               },
                               _vm.switchFields
                             ]
@@ -1673,7 +1663,7 @@ var render = function() {
                         }),
                         _vm._v(" "),
                         _c("label", { attrs: { for: "new" } }, [
-                          _vm._v("после 2005 (включительно)")
+                          _vm._v("2005 и после")
                         ])
                       ]
                     )
