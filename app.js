@@ -1394,12 +1394,11 @@ var render = function() {
                 ? _c("div", { staticClass: "mt-5 text-white" }, [
                     _c(
                       "fieldset",
-                      {
-                        staticClass:
-                          "border border-gray-500 rounded-lg px-5 pb-3"
-                      },
+                      { staticClass: "border border-gray-500 rounded-lg pb-3" },
                       [
-                        _c("legend", { staticClass: "px-1" }, [_vm._v("Газ")]),
+                        _c("legend", { staticClass: "ml-2 px-2" }, [
+                          _vm._v("Газ")
+                        ]),
                         _vm._v(" "),
                         _c("input", {
                           directives: [
@@ -1410,6 +1409,7 @@ var render = function() {
                               expression: "gas"
                             }
                           ],
+                          staticClass: "ml-4",
                           attrs: { id: "gasYes", type: "radio", value: "Есть" },
                           domProps: { checked: _vm._q(_vm.gas, "Есть") },
                           on: {
@@ -1436,6 +1436,7 @@ var render = function() {
                               expression: "gas"
                             }
                           ],
+                          staticClass: "ml-4",
                           attrs: { id: "gasNo", type: "radio", value: "Нет" },
                           domProps: { checked: _vm._q(_vm.gas, "Нет") },
                           on: {
@@ -1517,12 +1518,9 @@ var render = function() {
                 ? _c("div", { staticClass: "mt-5 text-white" }, [
                     _c(
                       "fieldset",
-                      {
-                        staticClass:
-                          "border border-gray-500 rounded-lg px-5 pb-3"
-                      },
+                      { staticClass: "border border-gray-500 rounded-lg pb-3" },
                       [
-                        _c("legend", { staticClass: "px-1" }, [
+                        _c("legend", { staticClass: "ml-2 px-2" }, [
                           _vm._v("Год выпуска")
                         ]),
                         _vm._v(" "),
@@ -1535,6 +1533,7 @@ var render = function() {
                               expression: "makeYear"
                             }
                           ],
+                          staticClass: "ml-4",
                           attrs: { id: "old", type: "radio", value: "по 2004" },
                           domProps: {
                             checked: _vm._q(_vm.makeYear, "по 2004")
@@ -1563,6 +1562,7 @@ var render = function() {
                               expression: "makeYear"
                             }
                           ],
+                          staticClass: "ml-4",
                           attrs: {
                             id: "new",
                             type: "radio",
