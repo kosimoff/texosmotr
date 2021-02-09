@@ -264,29 +264,9 @@ __webpack_require__.r(__webpack_exports__);
     return {
       base: 60,
       medical: 35,
-      insurance1Price: {
-        'Мотоцикл': 60,
-        'Легковая': 120,
-        'Миниавтобус': 120,
-        'Автобус': 180,
-        'Грузовая': 180,
-        'Спец. техника': 120,
-        'Плавучий транспорт': 0,
-        'Локомотив': 0
-      },
       insurance1: null,
       insurance2: 75,
       ecology: 45,
-      gasCertificatePrice: {
-        'Мотоцикл': 0,
-        'Легковая': 60,
-        'Миниавтобус': 66,
-        'Автобус': 66,
-        'Грузовая': 66,
-        'Спец. техника': 0,
-        'Плавучий транспорт': 0,
-        'Локомотив': 0
-      },
       gasCertificate: null,
       gasID: 35,
       talon: 8,
@@ -301,7 +281,7 @@ __webpack_require__.r(__webpack_exports__);
       filmField: true,
       film: 'Без тонировки',
       makeYear: 'по 2004',
-      engineCapacity: null,
+      enginePower: null,
       truckLoad: null,
       passengerCount: null,
       rater: null,
@@ -317,20 +297,10 @@ __webpack_require__.r(__webpack_exports__);
       resultMarginBottom: false,
       resultMarginLeft: false,
       resultFont: false,
-      engineCapacityFault: false,
+      enginePowerFault: false,
       window: {
         width: 0,
         height: 0
-      },
-      diagPrice: {
-        'Мотоцикл': 150,
-        'Легковая': 250,
-        'Миниавтобус': 350,
-        'Автобус': 350,
-        'Грузовая': 350,
-        'Спец. техника': 0,
-        'Плавучий транспорт': 0,
-        'Локомотив': 0
       },
       types: [{
         name: 'Мотоцикл',
@@ -338,7 +308,10 @@ __webpack_require__.r(__webpack_exports__);
           min: 0,
           max: 9999,
           percentage: 2.5
-        }]
+        }],
+        diagPrice: 150,
+        gasCertificatePrice: 0,
+        insurance1Price: 60
       }, {
         name: 'Легковая',
         rate: [{
@@ -357,7 +330,10 @@ __webpack_require__.r(__webpack_exports__);
           min: 350,
           max: 9999,
           percentage: 15
-        }]
+        }],
+        diagPrice: 250,
+        gasCertificatePrice: 60,
+        insurance1Price: 120
       }, {
         name: 'Миниавтобус',
         rate: [{
@@ -372,7 +348,10 @@ __webpack_require__.r(__webpack_exports__);
           min: 30,
           max: 9999,
           percentage: 9.5
-        }]
+        }],
+        diagPrice: 350,
+        gasCertificatePrice: 66,
+        insurance1Price: 120
       }, {
         name: 'Автобус',
         rate: [{
@@ -387,7 +366,10 @@ __webpack_require__.r(__webpack_exports__);
           min: 30,
           max: 9999,
           percentage: 9.5
-        }]
+        }],
+        diagPrice: 350,
+        gasCertificatePrice: 66,
+        insurance1Price: 180
       }, {
         name: 'Грузовая',
         rate: [{
@@ -406,25 +388,41 @@ __webpack_require__.r(__webpack_exports__);
           min: 40000,
           max: 999999,
           percentage: 14.5
-        }]
-      } // {
-      //   name: 'Спец. техника', rate: [
-      //     {min: 0, max: 9999, percentage: 2},
-      //   ]
-      // },
-      //
-      // {
-      //   name: 'Плавучий транспорт', rate: [
-      //     {min: 0, max: 9999, percentage: 15},
-      //   ]
-      // },
-      //
-      // {
-      //   name: 'Локомотив', rate: [
-      //     {min: 0, max: 9999, percentage: 1},
-      //   ]
-      // },
-      ]
+        }],
+        diagPrice: 350,
+        gasCertificatePrice: 66,
+        insurance1Price: 180
+      }, {
+        name: 'Спец. техника',
+        rate: [{
+          min: 0,
+          max: 9999,
+          percentage: 2
+        }],
+        diagPrice: 0,
+        gasCertificatePrice: 0,
+        insurance1Price: 120
+      }, {
+        name: 'Плавучий транспорт',
+        rate: [{
+          min: 0,
+          max: 9999,
+          percentage: 15
+        }],
+        diagPrice: 0,
+        gasCertificatePrice: 0,
+        insurance1Price: 0
+      }, {
+        name: 'Локомотив',
+        rate: [{
+          min: 0,
+          max: 9999,
+          percentage: 1
+        }],
+        diagPrice: 0,
+        gasCertificatePrice: 0,
+        insurance1Price: 0
+      }]
     };
   },
   created: function created() {
@@ -475,79 +473,55 @@ __webpack_require__.r(__webpack_exports__);
     },
     switchFields: function switchFields() {
       this.percentage = false;
-      this.engineCapacityFault = false;
+      this.enginePowerFault = false;
 
       switch (this.selectedTransport) {
         case 'Мотоцикл':
           this.gasField = false;
           this.filmField = false;
-          this.rater = this.engineCapacity;
-          this.diag = this.diagPrice[this.selectedTransport];
-          this.insurance1 = this.insurance1Price[this.selectedTransport];
-          this.gasCertificate = this.gasCertificatePrice[this.selectedTransport];
+          this.rater = this.enginePower;
           break;
 
         case 'Легковая':
           this.gasField = true;
           this.filmField = true;
-          this.rater = this.engineCapacity;
-          this.diag = this.diagPrice[this.selectedTransport];
-          this.insurance1 = this.insurance1Price[this.selectedTransport];
-          this.gasCertificate = this.gasCertificatePrice[this.selectedTransport];
+          this.rater = this.enginePower;
           break;
 
         case 'Миниавтобус':
           this.gasField = true;
           this.filmField = false;
           this.rater = this.passengerCount;
-          this.diag = this.diagPrice[this.selectedTransport];
-          this.insurance1 = this.insurance1Price[this.selectedTransport];
-          this.gasCertificate = this.gasCertificatePrice[this.selectedTransport];
           break;
 
         case 'Автобус':
           this.gasField = true;
           this.filmField = false;
           this.rater = this.passengerCount;
-          this.diag = this.diagPrice[this.selectedTransport];
-          this.insurance1 = this.insurance1Price[this.selectedTransport];
-          this.gasCertificate = this.gasCertificatePrice[this.selectedTransport];
           break;
 
         case 'Грузовая':
           this.gasField = true;
           this.filmField = false;
           this.rater = this.truckLoad;
-          this.diag = this.diagPrice[this.selectedTransport];
-          this.insurance1 = this.insurance1Price[this.selectedTransport];
-          this.gasCertificate = this.gasCertificatePrice[this.selectedTransport];
           break;
 
         case 'Спец. техника':
           this.gasField = false;
           this.filmField = false;
-          this.rater = this.engineCapacity;
-          this.diag = this.diagPrice[this.selectedTransport];
-          this.insurance1 = this.insurance1Price[this.selectedTransport];
-          this.gasCertificate = this.gasCertificatePrice[this.selectedTransport];
+          this.rater = this.enginePower;
           break;
 
         case 'Плавучий транспорт':
           this.gasField = false;
           this.filmField = false;
-          this.rater = this.engineCapacity;
-          this.diag = this.diagPrice[this.selectedTransport];
-          this.insurance1 = this.insurance1Price[this.selectedTransport];
-          this.gasCertificate = this.gasCertificatePrice[this.selectedTransport];
+          this.rater = this.enginePower;
           break;
 
         case 'Локомотив':
           this.gasField = false;
           this.filmField = false;
-          this.rater = this.engineCapacity;
-          this.diag = this.diagPrice[this.selectedTransport];
-          this.insurance1 = this.insurance1Price[this.selectedTransport];
-          this.gasCertificate = this.gasCertificatePrice[this.selectedTransport];
+          this.rater = this.enginePower;
           break;
       }
     },
@@ -556,9 +530,9 @@ __webpack_require__.r(__webpack_exports__);
       ym(71011222, 'reachGoal', 'aboutProject');
     },
     getPercentage: function getPercentage() {
-      for (var i = 0; i < this.types.length; i++) {
+      for (var i in this.types) {
         if (this.types[i].name === this.selectedTransport) {
-          for (var j = 0; j < this.types[i].rate.length; j++) {
+          for (var j in this.types[i].rate) {
             if (this.types[i].rate[j].min < this.rater && this.rater <= this.types[i].rate[j].max) {
               this.percentage = this.types[i].rate[j].percentage;
             }
@@ -603,12 +577,20 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     calculate: function calculate() {
-      if (this.engineCapacity && this.engineCapacity < 7) {
-        this.engineCapacityFault = true;
+      for (var type in this.types) {
+        if (this.types[type].name === this.selectedTransport) {
+          this.diag = this.types[type].diagPrice;
+          this.insurance1 = this.types[type].insurance1Price;
+          this.gasCertificate = this.types[type].gasCertificatePrice;
+        }
+      }
+
+      if (this.enginePower && this.enginePower < 7) {
+        this.enginePowerFault = true;
       } else {
-        this.engineCapacityFault = false;
+        this.enginePowerFault = false;
         this.getPercentage();
-        this.tax = (this.percentage / 100 * this.engineCapacity * this.base).toFixed(2) * 1;
+        this.tax = (this.percentage / 100 * this.enginePower * this.base).toFixed(2) * 1;
         this.total = (this.tax + this.talon + this.insurance1 + this.insurance2 + this.ecology + this.medical + this.diag + this.getGas() + this.getFilm()).toFixed(1);
       }
     }
@@ -1232,8 +1214,8 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.engineCapacity,
-                      expression: "engineCapacity"
+                      value: _vm.enginePower,
+                      expression: "enginePower"
                     }
                   ],
                   staticClass:
@@ -1244,21 +1226,21 @@ var render = function() {
                     min: "7",
                     required: ""
                   },
-                  domProps: { value: _vm.engineCapacity },
+                  domProps: { value: _vm.enginePower },
                   on: {
                     input: [
                       function($event) {
                         if ($event.target.composing) {
                           return
                         }
-                        _vm.engineCapacity = $event.target.value
+                        _vm.enginePower = $event.target.value
                       },
                       _vm.switchFields
                     ]
                   }
                 }),
                 _vm._v(" "),
-                _vm.engineCapacityFault
+                _vm.enginePowerFault
                   ? _c("div", { staticClass: "text-sm text-white" }, [
                       _vm._v(
                         "\n          Ошибка! Похоже вы ввели объем двигателя. Введите мощность двигателя в лошадиных силах. "
@@ -1633,7 +1615,7 @@ var render = function() {
               _vm._v(" "),
               _c("div", [
                 _vm._v(
-                  "Мощность двигателя: " + _vm._s(_vm.engineCapacity) + " л.с."
+                  "Мощность двигателя: " + _vm._s(_vm.enginePower) + " л.с."
                 )
               ]),
               _vm._v(" "),
