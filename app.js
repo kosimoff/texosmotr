@@ -230,6 +230,33 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Application",
   props: ['supportInstall'],
@@ -266,12 +293,12 @@ __webpack_require__.r(__webpack_exports__);
       truckLoadHint: false,
       about: false,
       total: null,
-      selectedTransport: null,
-      engineCapacityField: false,
-      truckLoadField: false,
-      passengerCountField: false,
+      selectedTransport: 'Легковая',
       gasField: true,
-      gas: 'нет',
+      gas: 'Нет',
+      filmField: true,
+      film: 'Нет',
+      makeYear: 'до 2004 (включительно)',
       engineCapacity: null,
       truckLoad: null,
       passengerCount: null,
@@ -302,12 +329,11 @@ __webpack_require__.r(__webpack_exports__);
         'Плавучий транспорт': 0,
         'Локомотив': 0
       },
-      types: [
-      /*{
-          name: 'Мотоцикл', rate: [
-              {min: 0, max: 9999, percentage: 2.5},
-          ]
-      }, */
+      types: [// {
+      //   name: 'Мотоцикл', rate: [
+      //     {min: 0, max: 9999, percentage: 2.5},
+      //   ]
+      // },
       {
         name: 'Легковая',
         rate: [{
@@ -361,22 +387,23 @@ __webpack_require__.r(__webpack_exports__);
           max: 999999,
           percentage: 14.5
         }]
-      }
-      /* {
-          name: 'Спец. техника', rate: [
-              {min: 0, max: 9999, percentage: 2},
-          ]
-      },
-        {
-          name: 'Плавучий транспорт', rate: [
-              {min: 0, max: 9999, percentage: 15},
-          ]
-      },
-       {
-          name: 'Локомотив', rate: [
-              {min: 0, max: 9999, percentage: 1},
-          ]
-      },*/
+      } // {
+      //   name: 'Спец. техника', rate: [
+      //     {min: 0, max: 9999, percentage: 2},
+      //   ]
+      // },
+      //
+      // {
+      //   name: 'Плавучий транспорт', rate: [
+      //     {min: 0, max: 9999, percentage: 15},
+      //   ]
+      // },
+      //
+      // {
+      //   name: 'Локомотив', rate: [
+      //     {min: 0, max: 9999, percentage: 1},
+      //   ]
+      // },
       ]
     };
   },
@@ -432,9 +459,8 @@ __webpack_require__.r(__webpack_exports__);
 
       switch (this.selectedTransport) {
         case 'Мотоцикл':
-          this.truckLoadField = false;
-          this.passengerCountField = false;
           this.gasField = false;
+          this.filmField = false;
           this.rater = this.engineCapacity;
           this.diag = this.diagPrice[this.selectedTransport];
           this.insurance1 = this.insurance1Price[this.selectedTransport];
@@ -442,9 +468,8 @@ __webpack_require__.r(__webpack_exports__);
           break;
 
         case 'Легковая':
-          this.truckLoadField = false;
-          this.passengerCountField = false;
           this.gasField = true;
+          this.filmField = true;
           this.rater = this.engineCapacity;
           this.diag = this.diagPrice[this.selectedTransport];
           this.insurance1 = this.insurance1Price[this.selectedTransport];
@@ -452,9 +477,8 @@ __webpack_require__.r(__webpack_exports__);
           break;
 
         case 'Миниавтобус/ Автобус':
-          this.truckLoadField = false;
-          this.passengerCountField = true;
           this.gasField = true;
+          this.filmField = false;
           this.rater = this.passengerCount;
           this.diag = this.diagPrice[this.selectedTransport];
           this.insurance1 = this.insurance1Price[this.selectedTransport];
@@ -462,9 +486,8 @@ __webpack_require__.r(__webpack_exports__);
           break;
 
         case 'Грузовая':
-          this.truckLoadField = true;
-          this.passengerCountField = false;
           this.gasField = true;
+          this.filmField = false;
           this.rater = this.truckLoad;
           this.diag = this.diagPrice[this.selectedTransport];
           this.insurance1 = this.insurance1Price[this.selectedTransport];
@@ -472,9 +495,8 @@ __webpack_require__.r(__webpack_exports__);
           break;
 
         case 'Спец. техника':
-          this.truckLoadField = false;
-          this.passengerCountField = false;
           this.gasField = false;
+          this.filmField = false;
           this.rater = this.engineCapacity;
           this.diag = this.diagPrice[this.selectedTransport];
           this.insurance1 = this.insurance1Price[this.selectedTransport];
@@ -482,9 +504,8 @@ __webpack_require__.r(__webpack_exports__);
           break;
 
         case 'Плавучий транспорт':
-          this.truckLoadField = false;
-          this.passengerCountField = false;
           this.gasField = false;
+          this.filmField = false;
           this.rater = this.engineCapacity;
           this.diag = this.diagPrice[this.selectedTransport];
           this.insurance1 = this.insurance1Price[this.selectedTransport];
@@ -492,9 +513,8 @@ __webpack_require__.r(__webpack_exports__);
           break;
 
         case 'Локомотив':
-          this.truckLoadField = false;
-          this.passengerCountField = false;
           this.gasField = false;
+          this.filmField = false;
           this.rater = this.engineCapacity;
           this.diag = this.diagPrice[this.selectedTransport];
           this.insurance1 = this.insurance1Price[this.selectedTransport];
@@ -518,8 +538,37 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     getGas: function getGas() {
-      if (this.gasField && this.gas === 'есть') {
+      if (this.gasField && this.gas === 'Есть') {
         return this.gasCertificate + this.gasID;
+      } else {
+        return 0;
+      }
+    },
+    getFilm: function getFilm() {
+      if (this.filmField) {
+        if (this.makeYear === 'до 2004 (включительно)') {
+          if (this.film === 'Только заднее') {
+            return this.base * 7;
+          } else if (this.film === 'Заднее и задные боковые') {
+            return this.base * 35;
+          } else if (this.film === 'Все') {
+            return this.base * 65;
+          } else {
+            return 0;
+          }
+        } else if (this.makeYear === 'после 2005 (включительно)') {
+          if (this.film === 'Только заднее') {
+            return this.base * 12;
+          } else if (this.film === 'Заднее и задные боковые') {
+            return this.base * 45;
+          } else if (this.film === 'Все') {
+            return this.base * 86;
+          } else {
+            return 0;
+          }
+        } else {
+          return 0;
+        }
       } else {
         return 0;
       }
@@ -531,7 +580,7 @@ __webpack_require__.r(__webpack_exports__);
         this.engineCapacityFault = false;
         this.getPercentage();
         this.tax = (this.percentage / 100 * this.engineCapacity * this.base).toFixed(2) * 1;
-        this.total = (this.tax + this.talon + this.insurance1 + this.insurance2 + this.ecology + this.medical + this.diag + this.getGas()).toFixed(2);
+        this.total = (this.tax + this.talon + this.insurance1 + this.insurance2 + this.ecology + this.medical + this.diag + this.getGas() + this.getFilm()).toFixed(1);
       }
     }
   }
@@ -1178,7 +1227,7 @@ var render = function() {
                 _vm.engineCapacityFault
                   ? _c("div", { staticClass: "text-sm text-white" }, [
                       _vm._v(
-                        "\n                          Ошибка! Похоже вы ввели объем двигателя. Введите мощность двигателя в лошадиных силах. "
+                        "\n          Ошибка! Похоже вы ввели объем двигателя. Введите мощность двигателя в лошадиных силах. "
                       ),
                       _c(
                         "span",
@@ -1196,7 +1245,7 @@ var render = function() {
                   : _vm._e()
               ]),
               _vm._v(" "),
-              _vm.truckLoadField
+              _vm.selectedTransport === "Грузовая"
                 ? _c("div", [
                     _c(
                       "label",
@@ -1262,7 +1311,7 @@ var render = function() {
                   ])
                 : _vm._e(),
               _vm._v(" "),
-              _vm.passengerCountField
+              _vm.selectedTransport === "Миниавтобус/ Автобус"
                 ? _c("div", [
                     _c(
                       "label",
@@ -1320,12 +1369,12 @@ var render = function() {
                             expression: "gas"
                           }
                         ],
-                        attrs: { id: "gasYes", type: "radio", value: "есть" },
-                        domProps: { checked: _vm._q(_vm.gas, "есть") },
+                        attrs: { id: "gasYes", type: "radio", value: "Есть" },
+                        domProps: { checked: _vm._q(_vm.gas, "Есть") },
                         on: {
                           change: [
                             function($event) {
-                              _vm.gas = "есть"
+                              _vm.gas = "Есть"
                             },
                             _vm.switchFields
                           ]
@@ -1346,12 +1395,12 @@ var render = function() {
                             expression: "gas"
                           }
                         ],
-                        attrs: { id: "gasNo", type: "radio", value: "нет" },
-                        domProps: { checked: _vm._q(_vm.gas, "нет") },
+                        attrs: { id: "gasNo", type: "radio", value: "Нет" },
+                        domProps: { checked: _vm._q(_vm.gas, "Нет") },
                         on: {
                           change: [
                             function($event) {
-                              _vm.gas = "нет"
+                              _vm.gas = "Нет"
                             },
                             _vm.switchFields
                           ]
@@ -1359,6 +1408,206 @@ var render = function() {
                       }),
                       _vm._v(" "),
                       _c("label", { attrs: { for: "gasNo" } }, [_vm._v("Нет")])
+                    ])
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.filmField
+                ? _c("div", { staticClass: "pt-5 text-white" }, [
+                    _c("fieldset", [
+                      _c("legend", [_vm._v("Тонировка")]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.film,
+                            expression: "film"
+                          }
+                        ],
+                        attrs: { id: "noFilm", type: "radio", value: "Нет" },
+                        domProps: { checked: _vm._q(_vm.film, "Нет") },
+                        on: {
+                          change: [
+                            function($event) {
+                              _vm.film = "Нет"
+                            },
+                            _vm.switchFields
+                          ]
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("label", { attrs: { for: "noFilm" } }, [
+                        _vm._v("Нет")
+                      ]),
+                      _c("br"),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.film,
+                            expression: "film"
+                          }
+                        ],
+                        attrs: {
+                          id: "backFilm",
+                          type: "radio",
+                          value: "Только заднее"
+                        },
+                        domProps: {
+                          checked: _vm._q(_vm.film, "Только заднее")
+                        },
+                        on: {
+                          change: [
+                            function($event) {
+                              _vm.film = "Только заднее"
+                            },
+                            _vm.switchFields
+                          ]
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("label", { attrs: { for: "backFilm" } }, [
+                        _vm._v("Только заднее")
+                      ]),
+                      _c("br"),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.film,
+                            expression: "film"
+                          }
+                        ],
+                        attrs: {
+                          id: "backAndBackSidesFilm",
+                          type: "radio",
+                          value: "Заднее и задные боковые"
+                        },
+                        domProps: {
+                          checked: _vm._q(_vm.film, "Заднее и задные боковые")
+                        },
+                        on: {
+                          change: [
+                            function($event) {
+                              _vm.film = "Заднее и задные боковые"
+                            },
+                            _vm.switchFields
+                          ]
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("label", { attrs: { for: "backAndBackSidesFilm" } }, [
+                        _vm._v("Заднее и задные боковые")
+                      ]),
+                      _c("br"),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.film,
+                            expression: "film"
+                          }
+                        ],
+                        attrs: { id: "allFilm", type: "radio", value: "Все" },
+                        domProps: { checked: _vm._q(_vm.film, "Все") },
+                        on: {
+                          change: [
+                            function($event) {
+                              _vm.film = "Все"
+                            },
+                            _vm.switchFields
+                          ]
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("label", { attrs: { for: "allFilm" } }, [
+                        _vm._v("Все")
+                      ])
+                    ])
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.filmField && _vm.film !== "Нет"
+                ? _c("div", { staticClass: "pt-5 text-white" }, [
+                    _c("fieldset", [
+                      _c("legend", [_vm._v("Год выпуска")]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.makeYear,
+                            expression: "makeYear"
+                          }
+                        ],
+                        attrs: {
+                          id: "old",
+                          type: "radio",
+                          value: "до 2004 (включительно)"
+                        },
+                        domProps: {
+                          checked: _vm._q(
+                            _vm.makeYear,
+                            "до 2004 (включительно)"
+                          )
+                        },
+                        on: {
+                          change: [
+                            function($event) {
+                              _vm.makeYear = "до 2004 (включительно)"
+                            },
+                            _vm.switchFields
+                          ]
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("label", { attrs: { for: "old" } }, [
+                        _vm._v("до 2004 (включительно)")
+                      ]),
+                      _c("br"),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.makeYear,
+                            expression: "makeYear"
+                          }
+                        ],
+                        attrs: {
+                          id: "new",
+                          type: "radio",
+                          value: "после 2005 (включительно)"
+                        },
+                        domProps: {
+                          checked: _vm._q(
+                            _vm.makeYear,
+                            "после 2005 (включительно)"
+                          )
+                        },
+                        on: {
+                          change: [
+                            function($event) {
+                              _vm.makeYear = "после 2005 (включительно)"
+                            },
+                            _vm.switchFields
+                          ]
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("label", { attrs: { for: "new" } }, [
+                        _vm._v("после 2005 (включительно)")
+                      ])
                     ])
                   ])
                 : _vm._e(),
@@ -1398,7 +1647,8 @@ var render = function() {
               _vm._v(" "),
               _c("div", { staticClass: "pt-1" }, [
                 _vm._v(
-                  "Тип транспортного средства: " + _vm._s(_vm.selectedTransport)
+                  "Тип транспортного средства: " +
+                    _vm._s(_vm.selectedTransport.toLowerCase())
                 )
               ]),
               _vm._v(" "),
@@ -1409,7 +1659,7 @@ var render = function() {
               ]),
               _vm._v(" "),
               _vm.gasField
-                ? _c("div", [_vm._v("Газ: " + _vm._s(_vm.gas))])
+                ? _c("div", [_vm._v("Газ: " + _vm._s(_vm.gas.toLowerCase()))])
                 : _vm._e(),
               _vm._v(" "),
               _vm.selectedTransport === "Миниавтобус/ Автобус"
@@ -1422,6 +1672,16 @@ var render = function() {
                 ? _c("div", [
                     _vm._v("Грузоподъемность: " + _vm._s(_vm.truckLoad) + " кг")
                   ])
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.filmField
+                ? _c("div", [
+                    _vm._v("Тонировка: " + _vm._s(_vm.film.toLowerCase()))
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.filmField && _vm.film !== "Нет"
+                ? _c("div", [_vm._v("Год выпуска: " + _vm._s(_vm.makeYear))])
                 : _vm._e(),
               _vm._v(" "),
               _c("hr", { staticClass: "mt-5 border-black" }),
@@ -1452,7 +1712,7 @@ var render = function() {
               _vm._v(" "),
               _c("div", [_vm._v(_vm._s(_vm.ecology) + " сомони - экология")]),
               _vm._v(" "),
-              _vm.gas === "есть"
+              _vm.gas === "Есть"
                 ? _c("div", [
                     _vm._v(
                       _vm._s(_vm.gasCertificate) + " сомони - сертификат (газ)"
@@ -1460,7 +1720,7 @@ var render = function() {
                   ])
                 : _vm._e(),
               _vm._v(" "),
-              _vm.gas === "есть"
+              _vm.gas === "Есть"
                 ? _c("div", [
                     _vm._v(_vm._s(_vm.gasID) + " сомони - удостоверение (газ)")
                   ])
@@ -1471,6 +1731,17 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", [_vm._v(_vm._s(_vm.diag) + " сомони - диагностика")]),
+              _vm._v(" "),
+              _vm.filmField && _vm.film !== "Нет"
+                ? _c("div", [
+                    _vm._v(
+                      _vm._s(_vm.getFilm()) +
+                        " сомони - тонировка (" +
+                        _vm._s(_vm.film.toLowerCase()) +
+                        ")"
+                    )
+                  ])
+                : _vm._e(),
               _vm._v(" "),
               _c("hr", { staticClass: "mt-5 border-black" }),
               _vm._v(" "),
@@ -1485,8 +1756,7 @@ var render = function() {
               _vm._v(" "),
               _c("div", [
                 _vm._v(
-                  _vm._s(_vm.total) +
-                    " сомони (включая добровольную страховку )"
+                  _vm._s(_vm.total) + " сомони (включая добровольную страховку)"
                 )
               ])
             ]),
