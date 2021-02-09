@@ -257,9 +257,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Application",
   props: ['supportInstall'],
@@ -1460,144 +1457,57 @@ var render = function() {
                 : _vm._e(),
               _vm._v(" "),
               _vm.filmField
-                ? _c("div", { staticClass: "mt-5 text-white" }, [
+                ? _c("div", { staticClass: "mt-5" }, [
                     _c(
-                      "fieldset",
+                      "label",
                       {
+                        staticClass: "flex mt-5 text-white",
+                        attrs: { for: "film" }
+                      },
+                      [_vm._v("Тонировка")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.film,
+                            expression: "film"
+                          }
+                        ],
                         staticClass:
-                          "border border-gray-500 rounded-lg px-5 pb-3"
+                          "focus:bg-white focus:outline-none w-full rounded bg-gray-200 text-gray-700",
+                        attrs: { id: "film", required: "" },
+                        on: {
+                          change: [
+                            function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.film = $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            },
+                            _vm.switchFields
+                          ]
+                        }
                       },
                       [
-                        _c("legend", { staticClass: "px-1" }, [
-                          _vm._v("Тонировка")
-                        ]),
+                        _c("option", [_vm._v("Без тонировки")]),
                         _vm._v(" "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.film,
-                              expression: "film"
-                            }
-                          ],
-                          attrs: {
-                            id: "noFilm",
-                            type: "radio",
-                            value: "Без тонировки"
-                          },
-                          domProps: {
-                            checked: _vm._q(_vm.film, "Без тонировки")
-                          },
-                          on: {
-                            change: [
-                              function($event) {
-                                _vm.film = "Без тонировки"
-                              },
-                              _vm.switchFields
-                            ]
-                          }
-                        }),
+                        _c("option", [_vm._v("Только заднее")]),
                         _vm._v(" "),
-                        _c("label", { attrs: { for: "noFilm" } }, [
-                          _vm._v("Без тонировки")
-                        ]),
-                        _c("br"),
+                        _c("option", [_vm._v("Заднее и задние боковые")]),
                         _vm._v(" "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.film,
-                              expression: "film"
-                            }
-                          ],
-                          attrs: {
-                            id: "backFilm",
-                            type: "radio",
-                            value: "Только заднее"
-                          },
-                          domProps: {
-                            checked: _vm._q(_vm.film, "Только заднее")
-                          },
-                          on: {
-                            change: [
-                              function($event) {
-                                _vm.film = "Только заднее"
-                              },
-                              _vm.switchFields
-                            ]
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c("label", { attrs: { for: "backFilm" } }, [
-                          _vm._v("Только заднее")
-                        ]),
-                        _c("br"),
-                        _vm._v(" "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.film,
-                              expression: "film"
-                            }
-                          ],
-                          attrs: {
-                            id: "backAndBackSidesFilm",
-                            type: "radio",
-                            value: "Заднее и задние боковые"
-                          },
-                          domProps: {
-                            checked: _vm._q(_vm.film, "Заднее и задние боковые")
-                          },
-                          on: {
-                            change: [
-                              function($event) {
-                                _vm.film = "Заднее и задние боковые"
-                              },
-                              _vm.switchFields
-                            ]
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c(
-                          "label",
-                          { attrs: { for: "backAndBackSidesFilm" } },
-                          [_vm._v("Заднее и задние боковые")]
-                        ),
-                        _c("br"),
-                        _vm._v(" "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.film,
-                              expression: "film"
-                            }
-                          ],
-                          attrs: {
-                            id: "allFilm",
-                            type: "radio",
-                            value: "Все стёкла"
-                          },
-                          domProps: { checked: _vm._q(_vm.film, "Все стёкла") },
-                          on: {
-                            change: [
-                              function($event) {
-                                _vm.film = "Все стёкла"
-                              },
-                              _vm.switchFields
-                            ]
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c("label", { attrs: { for: "allFilm" } }, [
-                          _vm._v("Все стёкла")
-                        ])
+                        _c("option", [_vm._v("Все стёкла")])
                       ]
                     )
                   ])
