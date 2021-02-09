@@ -265,11 +265,12 @@ __webpack_require__.r(__webpack_exports__);
       base: 60,
       medical: 35,
       insurance1Price: {
-        'Мотоцикл': 0,
+        'Мотоцикл': 60,
         'Легковая': 120,
-        'Миниавтобус/ Автобус': 120,
+        'Миниавтобус': 120,
+        'Автобус': 180,
         'Грузовая': 180,
-        'Спец. техника': 0,
+        'Спец. техника': 120,
         'Плавучий транспорт': 0,
         'Локомотив': 0
       },
@@ -279,7 +280,8 @@ __webpack_require__.r(__webpack_exports__);
       gasCertificatePrice: {
         'Мотоцикл': 0,
         'Легковая': 60,
-        'Миниавтобус/ Автобус': 66,
+        'Миниавтобус': 66,
+        'Автобус': 66,
         'Грузовая': 66,
         'Спец. техника': 0,
         'Плавучий транспорт': 0,
@@ -323,18 +325,21 @@ __webpack_require__.r(__webpack_exports__);
       diagPrice: {
         'Мотоцикл': 150,
         'Легковая': 250,
-        'Миниавтобус/ Автобус': 350,
+        'Миниавтобус': 350,
+        'Автобус': 350,
         'Грузовая': 350,
         'Спец. техника': 0,
         'Плавучий транспорт': 0,
         'Локомотив': 0
       },
-      types: [// {
-      //   name: 'Мотоцикл', rate: [
-      //     {min: 0, max: 9999, percentage: 2.5},
-      //   ]
-      // },
-      {
+      types: [{
+        name: 'Мотоцикл',
+        rate: [{
+          min: 0,
+          max: 9999,
+          percentage: 2.5
+        }]
+      }, {
         name: 'Легковая',
         rate: [{
           min: 0,
@@ -354,7 +359,22 @@ __webpack_require__.r(__webpack_exports__);
           percentage: 15
         }]
       }, {
-        name: 'Миниавтобус/ Автобус',
+        name: 'Миниавтобус',
+        rate: [{
+          min: 0,
+          max: 12,
+          percentage: 7.5
+        }, {
+          min: 12,
+          max: 30,
+          percentage: 8.5
+        }, {
+          min: 30,
+          max: 9999,
+          percentage: 9.5
+        }]
+      }, {
+        name: 'Автобус',
         rate: [{
           min: 0,
           max: 12,
@@ -476,7 +496,16 @@ __webpack_require__.r(__webpack_exports__);
           this.gasCertificate = this.gasCertificatePrice[this.selectedTransport];
           break;
 
-        case 'Миниавтобус/ Автобус':
+        case 'Миниавтобус':
+          this.gasField = true;
+          this.filmField = false;
+          this.rater = this.passengerCount;
+          this.diag = this.diagPrice[this.selectedTransport];
+          this.insurance1 = this.insurance1Price[this.selectedTransport];
+          this.gasCertificate = this.gasCertificatePrice[this.selectedTransport];
+          break;
+
+        case 'Автобус':
           this.gasField = true;
           this.filmField = false;
           this.rater = this.passengerCount;
@@ -574,7 +603,7 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     calculate: function calculate() {
-      if (this.engineCapacity && this.engineCapacity < 10) {
+      if (this.engineCapacity && this.engineCapacity < 7) {
         this.engineCapacityFault = true;
       } else {
         this.engineCapacityFault = false;
@@ -1212,7 +1241,7 @@ var render = function() {
                   attrs: {
                     type: "number",
                     id: "engine",
-                    min: "10",
+                    min: "7",
                     required: ""
                   },
                   domProps: { value: _vm.engineCapacity },
@@ -1316,7 +1345,8 @@ var render = function() {
                   ])
                 : _vm._e(),
               _vm._v(" "),
-              _vm.selectedTransport === "Миниавтобус/ Автобус"
+              _vm.selectedTransport === "Миниавтобус" ||
+              _vm.selectedTransport === "Автобус"
                 ? _c("div", [
                     _c(
                       "label",
@@ -1677,7 +1707,8 @@ var render = function() {
                 ? _c("div", [_vm._v("Газ: " + _vm._s(_vm.gas.toLowerCase()))])
                 : _vm._e(),
               _vm._v(" "),
-              _vm.selectedTransport === "Миниавтобус/ Автобус"
+              _vm.selectedTransport === "Миниавтобус" ||
+              _vm.selectedTransport === "Автобус"
                 ? _c("div", [
                     _vm._v("Количество мест: " + _vm._s(_vm.passengerCount))
                   ])
@@ -1712,7 +1743,7 @@ var render = function() {
                   {
                     attrs: {
                       href:
-                        "https://andoz.tj/docs/instruksii/Дастурамалхо%20бо%20назардошти%20тагиротхо%202019/9.%20Дастурамали%20наклиёт%20(тчк).pdf",
+                        "https://andoz.tj/docs/instruksii/Дастурамалхо%20бо%20назардошти%20тагиротхо%202019/9.%20Дасурамали%20наклиёт%20(русс).pdf",
                       target: "child"
                     }
                   },
@@ -1736,14 +1767,32 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", [
-                _vm._v(
-                  _vm._s(_vm.insurance1) + " сомони - обязательная страховка"
+                _vm._v(_vm._s(_vm.insurance1) + " сомони - "),
+                _c(
+                  "a",
+                  {
+                    attrs: {
+                      href:
+                        "https://your.tj/chto-nuzhno-znat-avtovladelcu-v-tadzhikistane-ob-osago-rasskazyvaem-podrobnosti/",
+                      target: "child"
+                    }
+                  },
+                  [_vm._v("обязательная страховка")]
                 )
               ]),
               _vm._v(" "),
               _c("div", [
-                _vm._v(
-                  _vm._s(_vm.insurance2) + " сомони - добровольная страховка"
+                _vm._v(_vm._s(_vm.insurance2) + " сомони - "),
+                _c(
+                  "a",
+                  {
+                    attrs: {
+                      href:
+                        "https://your.tj/chto-nuzhno-znat-avtovladelcu-v-tadzhikistane-ob-osago-rasskazyvaem-podrobnosti/",
+                      target: "child"
+                    }
+                  },
+                  [_vm._v("добровольная страховка")]
                 )
               ]),
               _vm._v(" "),
@@ -1785,15 +1834,32 @@ var render = function() {
               _c("div", { staticClass: "font-bold pt-5" }, [_vm._v("Итого:")]),
               _vm._v(" "),
               _c("div", [
-                _vm._v(
-                  _vm._s(_vm.total - _vm.insurance2) +
-                    " сомони (без добровольной страховки)"
+                _vm._v(_vm._s(_vm.total - _vm.insurance2) + " сомони "),
+                _c(
+                  "a",
+                  {
+                    attrs: {
+                      href:
+                        "https://your.tj/chto-nuzhno-znat-avtovladelcu-v-tadzhikistane-ob-osago-rasskazyvaem-podrobnosti/",
+                      target: "child"
+                    }
+                  },
+                  [_vm._v("(без добровольной страховки)")]
                 )
               ]),
               _vm._v(" "),
               _c("div", [
-                _vm._v(
-                  _vm._s(_vm.total) + " сомони (включая добровольную страховку)"
+                _vm._v(_vm._s(_vm.total) + " сомони "),
+                _c(
+                  "a",
+                  {
+                    attrs: {
+                      href:
+                        "https://your.tj/chto-nuzhno-znat-avtovladelcu-v-tadzhikistane-ob-osago-rasskazyvaem-podrobnosti/",
+                      target: "child"
+                    }
+                  },
+                  [_vm._v("(включая добровольную страховку)")]
                 )
               ])
             ]),
