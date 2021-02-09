@@ -1173,7 +1173,7 @@ var render = function() {
                       }
                     ],
                     staticClass:
-                      "focus:bg-white focus:outline-none w-full rounded bg-gray-200",
+                      "focus:bg-white focus:outline-none w-full rounded bg-gray-200 text-gray-700",
                     attrs: { id: "transport", required: "" },
                     on: {
                       change: [
@@ -1240,7 +1240,7 @@ var render = function() {
                     }
                   ],
                   staticClass:
-                    "pl-2 focus:bg-white focus:outline-none w-full rounded bg-gray-200",
+                    "pl-2 focus:bg-white focus:outline-none w-full rounded bg-gray-200 text-gray-700",
                   attrs: {
                     type: "number",
                     id: "engine",
@@ -1325,7 +1325,7 @@ var render = function() {
                         }
                       ],
                       staticClass:
-                        "pl-2 focus:bg-white focus:outline-none w-full rounded bg-gray-200",
+                        "pl-2 focus:bg-white focus:outline-none w-full rounded bg-gray-200 text-gray-700",
                       attrs: {
                         type: "number",
                         min: "1",
@@ -1370,7 +1370,7 @@ var render = function() {
                         }
                       ],
                       staticClass:
-                        "pl-2 focus:bg-white focus:outline-none w-full rounded bg-gray-200",
+                        "pl-2 focus:bg-white focus:outline-none w-full rounded bg-gray-200 text-gray-700",
                       attrs: {
                         type: "number",
                         min: "1",
