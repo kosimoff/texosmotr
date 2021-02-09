@@ -264,8 +264,8 @@ __webpack_require__.r(__webpack_exports__);
     return {
       base: 60,
       medical: 35,
-      insurance1: null,
-      insurance2: 75,
+      mainInsurance: null,
+      insurance: 75,
       ecology: 45,
       gasCertificate: null,
       gasID: 35,
@@ -309,9 +309,9 @@ __webpack_require__.r(__webpack_exports__);
           max: 9999,
           percentage: 2.5
         }],
-        diagPrice: 150,
-        gasCertificatePrice: 0,
-        insurance1Price: 60
+        diag: 150,
+        gasCertificate: 0,
+        mainInsurance: 60
       }, {
         name: 'Легковая',
         rate: [{
@@ -331,9 +331,9 @@ __webpack_require__.r(__webpack_exports__);
           max: 9999,
           percentage: 15
         }],
-        diagPrice: 250,
-        gasCertificatePrice: 60,
-        insurance1Price: 120
+        diag: 250,
+        gasCertificate: 60,
+        mainInsurance: 120
       }, {
         name: 'Миниавтобус',
         rate: [{
@@ -349,9 +349,9 @@ __webpack_require__.r(__webpack_exports__);
           max: 9999,
           percentage: 9.5
         }],
-        diagPrice: 350,
-        gasCertificatePrice: 66,
-        insurance1Price: 120
+        diag: 350,
+        gasCertificate: 66,
+        mainInsurance: 120
       }, {
         name: 'Автобус',
         rate: [{
@@ -367,9 +367,9 @@ __webpack_require__.r(__webpack_exports__);
           max: 9999,
           percentage: 9.5
         }],
-        diagPrice: 350,
-        gasCertificatePrice: 66,
-        insurance1Price: 180
+        diag: 350,
+        gasCertificate: 66,
+        mainInsurance: 180
       }, {
         name: 'Грузовая',
         rate: [{
@@ -389,40 +389,39 @@ __webpack_require__.r(__webpack_exports__);
           max: 999999,
           percentage: 14.5
         }],
-        diagPrice: 350,
-        gasCertificatePrice: 66,
-        insurance1Price: 180
-      }, {
-        name: 'Спец. техника',
-        rate: [{
-          min: 0,
-          max: 9999,
-          percentage: 2
-        }],
-        diagPrice: 0,
-        gasCertificatePrice: 0,
-        insurance1Price: 120
-      }, {
-        name: 'Плавучий транспорт',
-        rate: [{
-          min: 0,
-          max: 9999,
-          percentage: 15
-        }],
-        diagPrice: 0,
-        gasCertificatePrice: 0,
-        insurance1Price: 0
-      }, {
-        name: 'Локомотив',
-        rate: [{
-          min: 0,
-          max: 9999,
-          percentage: 1
-        }],
-        diagPrice: 0,
-        gasCertificatePrice: 0,
-        insurance1Price: 0
-      }]
+        diag: 350,
+        gasCertificate: 66,
+        mainInsurance: 180
+      } // {
+      //   name: 'Спец. техника',
+      //   rate: [
+      //     {min: 0, max: 9999, percentage: 2},
+      //   ],
+      //   diag: 0,
+      //   gasCertificate: 0,
+      //   mainInsurance: 120
+      // },
+      //
+      // {
+      //   name: 'Плавучий транспорт',
+      //   rate: [
+      //     {min: 0, max: 9999, percentage: 15},
+      //   ],
+      //   diag: 0,
+      //   gasCertificate: 0,
+      //   mainInsurance: 0
+      // },
+      //
+      // {
+      //   name: 'Локомотив',
+      //   rate: [
+      //     {min: 0, max: 9999, percentage: 1},
+      //   ],
+      //   diag: 0,
+      //   gasCertificate: 0,
+      //   mainInsurance: 0
+      // },
+      ]
     };
   },
   created: function created() {
@@ -579,9 +578,9 @@ __webpack_require__.r(__webpack_exports__);
     calculate: function calculate() {
       for (var type in this.types) {
         if (this.types[type].name === this.selectedTransport) {
-          this.diag = this.types[type].diagPrice;
-          this.insurance1 = this.types[type].insurance1Price;
-          this.gasCertificate = this.types[type].gasCertificatePrice;
+          this.diag = this.types[type].diag;
+          this.mainInsurance = this.types[type].mainInsurance;
+          this.gasCertificate = this.types[type].gasCertificate;
         }
       }
 
@@ -591,7 +590,7 @@ __webpack_require__.r(__webpack_exports__);
         this.enginePowerFault = false;
         this.getPercentage();
         this.tax = (this.percentage / 100 * this.enginePower * this.base).toFixed(2) * 1;
-        this.total = (this.tax + this.talon + this.insurance1 + this.insurance2 + this.ecology + this.medical + this.diag + this.getGas() + this.getFilm()).toFixed(1);
+        this.total = (this.tax + this.talon + this.mainInsurance + this.insurance + this.ecology + this.medical + this.diag + this.getGas() + this.getFilm()).toFixed(1);
       }
     }
   }
@@ -1681,7 +1680,7 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", [
-                _vm._v(_vm._s(_vm.insurance1) + " сомони - "),
+                _vm._v(_vm._s(_vm.mainInsurance) + " сомони - "),
                 _c(
                   "a",
                   {
@@ -1696,7 +1695,7 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", [
-                _vm._v(_vm._s(_vm.insurance2) + " сомони - "),
+                _vm._v(_vm._s(_vm.insurance) + " сомони - "),
                 _c(
                   "a",
                   {
@@ -1748,7 +1747,7 @@ var render = function() {
               _c("hr", { staticClass: "mt-1 border-gray-400" }),
               _vm._v(" "),
               _c("div", { staticClass: "mt-1" }, [
-                _vm._v(_vm._s(_vm.total - _vm.insurance2) + " сомони "),
+                _vm._v(_vm._s(_vm.total - _vm.insurance) + " сомони "),
                 _c(
                   "a",
                   {
