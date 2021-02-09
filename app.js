@@ -1711,7 +1711,7 @@ var render = function() {
               _vm._v(" "),
               _c("div", [_vm._v(_vm._s(_vm.ecology) + " сомони - экология")]),
               _vm._v(" "),
-              _vm.gas === "Есть"
+              _vm.gasField && _vm.gas === "Есть"
                 ? _c("div", [
                     _vm._v(
                       _vm._s(_vm.gasCertificate) + " сомони - сертификат (газ)"
@@ -1719,7 +1719,7 @@ var render = function() {
                   ])
                 : _vm._e(),
               _vm._v(" "),
-              _vm.gas === "Есть"
+              _vm.gasField && _vm.gas === "Есть"
                 ? _c("div", [
                     _vm._v(_vm._s(_vm.gasID) + " сомони - удостоверение (газ)")
                   ])
