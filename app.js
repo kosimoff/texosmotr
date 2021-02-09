@@ -303,7 +303,7 @@ __webpack_require__.r(__webpack_exports__);
       gas: 'Нет',
       filmField: true,
       film: 'Без тонировки',
-      makeYear: 'до 2004',
+      makeYear: 'по 2004',
       engineCapacity: null,
       truckLoad: null,
       passengerCount: null,
@@ -578,7 +578,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     getFilm: function getFilm() {
       if (this.filmField) {
-        if (this.makeYear === 'до 2004') {
+        if (this.makeYear === 'по 2004') {
           if (this.film === 'Только заднее') {
             return this.base * 7;
           } else if (this.film === 'Заднее и задние боковые') {
@@ -1397,7 +1397,7 @@ var render = function() {
                 ? _c("div", { staticClass: "mt-5 text-white" }, [
                     _c(
                       "fieldset",
-                      { staticClass: "border border-gray-500 px-5 pb-5" },
+                      { staticClass: "border border-gray-500 px-5 pb-3" },
                       [
                         _c("legend", { staticClass: "px-1" }, [_vm._v("Газ")]),
                         _vm._v(" "),
@@ -1460,7 +1460,7 @@ var render = function() {
                 ? _c("div", { staticClass: "mt-5 text-white" }, [
                     _c(
                       "fieldset",
-                      { staticClass: "border border-gray-500 px-5 pb-5" },
+                      { staticClass: "border border-gray-500 px-5 pb-3" },
                       [
                         _c("legend", { staticClass: "px-1" }, [
                           _vm._v("Тонировка")
@@ -1601,7 +1601,7 @@ var render = function() {
                 ? _c("div", { staticClass: "mt-5 text-white" }, [
                     _c(
                       "fieldset",
-                      { staticClass: "border border-gray-500 px-5 pb-5" },
+                      { staticClass: "border border-gray-500 px-5 pb-3" },
                       [
                         _c("legend", { staticClass: "px-1" }, [
                           _vm._v("Год выпуска")
@@ -1616,14 +1616,14 @@ var render = function() {
                               expression: "makeYear"
                             }
                           ],
-                          attrs: { id: "old", type: "radio", value: "до 2004" },
+                          attrs: { id: "old", type: "radio", value: "по 2004" },
                           domProps: {
-                            checked: _vm._q(_vm.makeYear, "до 2004")
+                            checked: _vm._q(_vm.makeYear, "по 2004")
                           },
                           on: {
                             change: [
                               function($event) {
-                                _vm.makeYear = "до 2004"
+                                _vm.makeYear = "по 2004"
                               },
                               _vm.switchFields
                             ]
@@ -1631,7 +1631,7 @@ var render = function() {
                         }),
                         _vm._v(" "),
                         _c("label", { attrs: { for: "old" } }, [
-                          _vm._v("до 2004")
+                          _vm._v("по 2004")
                         ]),
                         _c("br"),
                         _vm._v(" "),
