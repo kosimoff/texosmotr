@@ -297,7 +297,7 @@ __webpack_require__.r(__webpack_exports__);
       gasField: true,
       gas: 'Нет',
       filmField: true,
-      film: 'Нет',
+      film: 'Без тонировки',
       makeYear: 'до 2004 (включительно)',
       engineCapacity: null,
       truckLoad: null,
@@ -549,9 +549,9 @@ __webpack_require__.r(__webpack_exports__);
         if (this.makeYear === 'до 2004 (включительно)') {
           if (this.film === 'Только заднее') {
             return this.base * 7;
-          } else if (this.film === 'Заднее и задные боковые') {
+          } else if (this.film === 'Заднее и задние боковые') {
             return this.base * 35;
-          } else if (this.film === 'Все') {
+          } else if (this.film === 'Все стёкла') {
             return this.base * 65;
           } else {
             return 0;
@@ -559,9 +559,9 @@ __webpack_require__.r(__webpack_exports__);
         } else if (this.makeYear === 'после 2005 (включительно)') {
           if (this.film === 'Только заднее') {
             return this.base * 12;
-          } else if (this.film === 'Заднее и задные боковые') {
+          } else if (this.film === 'Заднее и задние боковые') {
             return this.base * 45;
-          } else if (this.film === 'Все') {
+          } else if (this.film === 'Все стёкла') {
             return this.base * 86;
           } else {
             return 0;
@@ -1209,7 +1209,12 @@ var render = function() {
                   ],
                   staticClass:
                     "pl-2 focus:bg-white focus:outline-none w-full rounded bg-gray-200",
-                  attrs: { type: "number", id: "engine", required: "" },
+                  attrs: {
+                    type: "number",
+                    id: "engine",
+                    min: "10",
+                    required: ""
+                  },
                   domProps: { value: _vm.engineCapacity },
                   on: {
                     input: [
@@ -1426,12 +1431,18 @@ var render = function() {
                             expression: "film"
                           }
                         ],
-                        attrs: { id: "noFilm", type: "radio", value: "Нет" },
-                        domProps: { checked: _vm._q(_vm.film, "Нет") },
+                        attrs: {
+                          id: "noFilm",
+                          type: "radio",
+                          value: "Без тонировки"
+                        },
+                        domProps: {
+                          checked: _vm._q(_vm.film, "Без тонировки")
+                        },
                         on: {
                           change: [
                             function($event) {
-                              _vm.film = "Нет"
+                              _vm.film = "Без тонировки"
                             },
                             _vm.switchFields
                           ]
@@ -1439,7 +1450,7 @@ var render = function() {
                       }),
                       _vm._v(" "),
                       _c("label", { attrs: { for: "noFilm" } }, [
-                        _vm._v("Нет")
+                        _vm._v("Без тонировки")
                       ]),
                       _c("br"),
                       _vm._v(" "),
@@ -1487,15 +1498,15 @@ var render = function() {
                         attrs: {
                           id: "backAndBackSidesFilm",
                           type: "radio",
-                          value: "Заднее и задные боковые"
+                          value: "Заднее и задние боковые"
                         },
                         domProps: {
-                          checked: _vm._q(_vm.film, "Заднее и задные боковые")
+                          checked: _vm._q(_vm.film, "Заднее и задние боковые")
                         },
                         on: {
                           change: [
                             function($event) {
-                              _vm.film = "Заднее и задные боковые"
+                              _vm.film = "Заднее и задние боковые"
                             },
                             _vm.switchFields
                           ]
@@ -1503,7 +1514,7 @@ var render = function() {
                       }),
                       _vm._v(" "),
                       _c("label", { attrs: { for: "backAndBackSidesFilm" } }, [
-                        _vm._v("Заднее и задные боковые")
+                        _vm._v("Заднее и задние боковые")
                       ]),
                       _c("br"),
                       _vm._v(" "),
@@ -1516,12 +1527,16 @@ var render = function() {
                             expression: "film"
                           }
                         ],
-                        attrs: { id: "allFilm", type: "radio", value: "Все" },
-                        domProps: { checked: _vm._q(_vm.film, "Все") },
+                        attrs: {
+                          id: "allFilm",
+                          type: "radio",
+                          value: "Все стёкла"
+                        },
+                        domProps: { checked: _vm._q(_vm.film, "Все стёкла") },
                         on: {
                           change: [
                             function($event) {
-                              _vm.film = "Все"
+                              _vm.film = "Все стёкла"
                             },
                             _vm.switchFields
                           ]
@@ -1529,13 +1544,13 @@ var render = function() {
                       }),
                       _vm._v(" "),
                       _c("label", { attrs: { for: "allFilm" } }, [
-                        _vm._v("Все")
+                        _vm._v("Все стёкла")
                       ])
                     ])
                   ])
                 : _vm._e(),
               _vm._v(" "),
-              _vm.filmField && _vm.film !== "Нет"
+              _vm.filmField && _vm.film !== "Без тонировки"
                 ? _c("div", { staticClass: "pt-5 text-white" }, [
                     _c("fieldset", [
                       _c("legend", [_vm._v("Год выпуска")]),
@@ -1680,7 +1695,7 @@ var render = function() {
                   ])
                 : _vm._e(),
               _vm._v(" "),
-              _vm.filmField && _vm.film !== "Нет"
+              _vm.filmField && _vm.film !== "Без тонировки"
                 ? _c("div", [_vm._v("Год выпуска: " + _vm._s(_vm.makeYear))])
                 : _vm._e(),
               _vm._v(" "),
@@ -1691,12 +1706,34 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "pt-1" }, [
-                _vm._v(
-                  _vm._s(_vm.tax) + " сомони - налог на транспортное средство"
+                _vm._v(_vm._s(_vm.tax) + " сомони - "),
+                _c(
+                  "a",
+                  {
+                    attrs: {
+                      href:
+                        "https://andoz.tj/docs/instruksii/Дастурамалхо%20бо%20назардошти%20тагиротхо%202019/9.%20Дастурамали%20наклиёт%20(тчк).pdf",
+                      target: "child"
+                    }
+                  },
+                  [_vm._v("налог на транспортное средство")]
                 )
               ]),
               _vm._v(" "),
-              _c("div", [_vm._v(_vm._s(_vm.talon) + " сомони - талон")]),
+              _c("div", [
+                _vm._v(_vm._s(_vm.talon) + " сомони - "),
+                _c(
+                  "a",
+                  {
+                    attrs: {
+                      href:
+                        "https://mvd.tj/index.php/ru/rubrika-ob-yavlenij-i-konkursov/11478-denezhnye-tarify-po-obsluzhivaniyu-gai",
+                      target: "child"
+                    }
+                  },
+                  [_vm._v("технический бланк (талон)")]
+                )
+              ]),
               _vm._v(" "),
               _c("div", [
                 _vm._v(
@@ -1732,7 +1769,7 @@ var render = function() {
               _vm._v(" "),
               _c("div", [_vm._v(_vm._s(_vm.diag) + " сомони - диагностика")]),
               _vm._v(" "),
-              _vm.filmField && _vm.film !== "Нет"
+              _vm.filmField && _vm.film !== "Без тонировки"
                 ? _c("div", [
                     _vm._v(
                       _vm._s(_vm.getFilm()) +
