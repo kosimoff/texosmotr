@@ -1710,7 +1710,7 @@ var render = function() {
           },
           [
             _c("div", { staticClass: "bg-white p-10 shadow-2xl" }, [
-              _c("div", { staticClass: "font-bold" }, [_vm._v("Данные:")]),
+              _c("div", { staticClass: "font-bold" }, [_vm._v("Данные")]),
               _vm._v(" "),
               _c("hr", { staticClass: "mt-1 border-gray-400" }),
               _vm._v(" "),
@@ -1754,9 +1754,7 @@ var render = function() {
                 ? _c("div", [_vm._v("Год выпуска: " + _vm._s(_vm.makeYear))])
                 : _vm._e(),
               _vm._v(" "),
-              _c("div", { staticClass: "mt-6 font-bold" }, [
-                _vm._v("Расходы:")
-              ]),
+              _c("div", { staticClass: "mt-6 font-bold" }, [_vm._v("Расходы")]),
               _vm._v(" "),
               _c("hr", { staticClass: "mt-1 border-gray-400" }),
               _vm._v(" "),
@@ -1853,7 +1851,7 @@ var render = function() {
                   ])
                 : _vm._e(),
               _vm._v(" "),
-              _c("div", { staticClass: "mt-6 font-bold" }, [_vm._v("Итого:")]),
+              _c("div", { staticClass: "mt-6 font-bold" }, [_vm._v("Итого")]),
               _vm._v(" "),
               _c("hr", { staticClass: "mt-1 border-gray-400" }),
               _vm._v(" "),
