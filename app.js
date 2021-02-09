@@ -257,6 +257,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Application",
   props: ['supportInstall'],
@@ -1690,7 +1693,9 @@ var render = function() {
             _c("div", { staticClass: "bg-white p-10 shadow-2xl" }, [
               _c("div", { staticClass: "font-bold" }, [_vm._v("Данные:")]),
               _vm._v(" "),
-              _c("div", { staticClass: "pt-1" }, [
+              _c("hr", { staticClass: "mt-1 border-gray-400" }),
+              _vm._v(" "),
+              _c("div", { staticClass: "mt-1" }, [
                 _vm._v(
                   "Тип транспортного средства: " +
                     _vm._s(_vm.selectedTransport.toLowerCase())
@@ -1730,13 +1735,13 @@ var render = function() {
                 ? _c("div", [_vm._v("Год выпуска: " + _vm._s(_vm.makeYear))])
                 : _vm._e(),
               _vm._v(" "),
-              _c("hr", { staticClass: "mt-5 border-black" }),
-              _vm._v(" "),
-              _c("div", { staticClass: "font-bold pt-5" }, [
+              _c("div", { staticClass: "mt-6 font-bold" }, [
                 _vm._v("Расходы:")
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "pt-1" }, [
+              _c("hr", { staticClass: "mt-1 border-gray-400" }),
+              _vm._v(" "),
+              _c("div", { staticClass: "mt-1" }, [
                 _vm._v(_vm._s(_vm.tax) + " сомони - "),
                 _c(
                   "a",
@@ -1829,11 +1834,11 @@ var render = function() {
                   ])
                 : _vm._e(),
               _vm._v(" "),
-              _c("hr", { staticClass: "mt-5 border-black" }),
+              _c("div", { staticClass: "mt-6 font-bold" }, [_vm._v("Итого:")]),
               _vm._v(" "),
-              _c("div", { staticClass: "font-bold pt-5" }, [_vm._v("Итого:")]),
+              _c("hr", { staticClass: "mt-1 border-gray-400" }),
               _vm._v(" "),
-              _c("div", [
+              _c("div", { staticClass: "mt-1" }, [
                 _vm._v(_vm._s(_vm.total - _vm.insurance2) + " сомони "),
                 _c(
                   "a",
