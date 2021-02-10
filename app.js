@@ -558,7 +558,7 @@ __webpack_require__.r(__webpack_exports__);
       if (this.gasField && this.gasYesNo === 'Есть') {
         this.gas = this.gasCertificate + this.gasID;
       } else {
-        return 0;
+        this.gas = 0;
       }
     },
     getFilm: function getFilm() {
