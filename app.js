@@ -562,10 +562,14 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     getFilm: function getFilm() {
-      for (var i in this.filmPrice) {
-        if (this.filmPrice[i].makeYear === this.makeYear) {
-          this.film = this.filmPrice[i][this.filmType] * this.base;
+      if (this.filmField) {
+        for (var i in this.filmPrice) {
+          if (this.filmPrice[i].makeYear === this.makeYear) {
+            this.film = this.filmPrice[i][this.filmType] * this.base;
+          }
         }
+      } else {
+        this.film = 0;
       }
     },
     calculate: function calculate() {
