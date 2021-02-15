@@ -1956,7 +1956,7 @@ var render = function() {
           staticClass: "no-underline cursor-pointer",
           attrs: {
             target: "child",
-            href: "https://rastamojka.tj/index.hmtl?техосмотр"
+            href: "https://rastamojka.tj/index.html?техосмотр"
           }
         },
         [_vm._v("Растаможка")]
