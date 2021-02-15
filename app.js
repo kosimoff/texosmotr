@@ -1954,7 +1954,10 @@ var render = function() {
         "a",
         {
           staticClass: "no-underline cursor-pointer",
-          attrs: { target: "child", href: "https://rastamojka.tj?техосмотр" }
+          attrs: {
+            target: "child",
+            href: "https://rastamojka.tj/index.hmtl?техосмотр"
+          }
         },
         [_vm._v("Растаможка")]
       ),
