@@ -257,6 +257,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Application",
   props: ['supportInstall'],
@@ -1926,7 +1932,9 @@ var render = function() {
         },
         [_vm._v("Главная")]
       ),
+      _vm._v(" "),
       _c("span", { staticClass: "text-black" }, [_vm._v(" | ")]),
+      _vm._v(" "),
       _c(
         "span",
         {
@@ -1939,6 +1947,18 @@ var render = function() {
         },
         [_vm._v("О проекте")]
       ),
+      _vm._v(" "),
+      _c("span", { staticClass: "text-black" }, [_vm._v(" | ")]),
+      _vm._v(" "),
+      _c(
+        "a",
+        {
+          staticClass: "no-underline cursor-pointer",
+          attrs: { target: "child", href: "https://rastamojka.tj?техосмотр" }
+        },
+        [_vm._v("Растаможка")]
+      ),
+      _vm._v(" "),
       _vm._m(6)
     ]),
     _vm._v(" "),
