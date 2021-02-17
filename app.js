@@ -269,10 +269,10 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       base: 60,
-      medical: 35,
+      medical: 52,
       mainInsurance: null,
       insurance: 75,
-      ecology: 45,
+      ecology: 50,
       gasCertificate: null,
       gasID: 35,
       talon: 8,
@@ -352,7 +352,7 @@ __webpack_require__.r(__webpack_exports__);
           max: 9999,
           percentage: 15
         }],
-        diag: 250,
+        diag: 285,
         gasCertificate: 60,
         mainInsurance: 120
       }, {
