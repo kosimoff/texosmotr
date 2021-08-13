@@ -263,6 +263,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Application",
   props: ['supportInstall'],
@@ -1902,13 +1903,15 @@ var render = function() {
             _vm._v("-поделитесь сайтом в социальных сетях и мессенджерах.")
           ]),
           _vm._v(" "),
+          _vm._m(5),
+          _vm._v(" "),
           _c("p", [
             _vm._v(
               "-расскажите нам свое мнение, свои предложения, идею, и об ошибках сайта."
             )
           ]),
           _vm._v(" "),
-          _vm._m(5),
+          _vm._m(6),
           _vm._v(" "),
           _c("p", { staticClass: "pt-5" }, [
             _vm._v("Мы будем рады любому вашему вкладу. Спасибо!")
@@ -1962,10 +1965,10 @@ var render = function() {
         [_vm._v("Растаможка")]
       ),
       _vm._v(" "),
-      _vm._m(6)
+      _vm._m(7)
     ]),
     _vm._v(" "),
-    _vm._m(7)
+    _vm._m(8)
   ])
 }
 var staticRenderFns = [
@@ -2015,6 +2018,25 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "uppercase" }, [
       _c("b", [_vm._v("О проекте")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", [
+      _vm._v("-подпишитесь на наш "),
+      _c(
+        "a",
+        {
+          attrs: {
+            target: "_blank",
+            href: "https://instagram.com/texosmotr.tj"
+          }
+        },
+        [_vm._v("инстаграм")]
+      ),
+      _vm._v(".")
     ])
   },
   function() {
