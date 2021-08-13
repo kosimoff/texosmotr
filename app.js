@@ -2035,8 +2035,7 @@ var staticRenderFns = [
           }
         },
         [_vm._v("@texosmotr.tj")]
-      ),
-      _vm._v(".")
+      )
     ])
   },
   function() {
