@@ -1957,10 +1957,7 @@ var render = function() {
         "a",
         {
           staticClass: "no-underline cursor-pointer",
-          attrs: {
-            target: "child",
-            href: "https://rastamojka.tj/index.html?техосмотр"
-          }
+          attrs: { target: "child", href: "https://rastamojka.tj?техосмотр" }
         },
         [_vm._v("Растаможка")]
       ),
