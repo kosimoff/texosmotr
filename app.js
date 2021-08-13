@@ -2025,7 +2025,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("p", [
-      _vm._v("-подпишитесь на наш "),
+      _vm._v("-подпишитесь на наш инстаграм "),
       _c(
         "a",
         {
@@ -2034,7 +2034,7 @@ var staticRenderFns = [
             href: "https://instagram.com/texosmotr.tj"
           }
         },
-        [_vm._v("инстаграм")]
+        [_vm._v("@texosmotr.tj")]
       ),
       _vm._v(".")
     ])
